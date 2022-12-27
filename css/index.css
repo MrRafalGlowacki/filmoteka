@@ -1,0 +1,81 @@
+@import '~node_modules/modern-normalize/modern-normalize.css';
+.example {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  background-color: #fff;
+  color: #2f2f37;
+  max-width: 960px;
+  padding: 16px;
+}
+
+.example code {
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: #ff6b0a;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+.example .background {
+  height: 240px;
+  background-image: url("../images/logo.png");
+  background-size: cover;
+  background-position: center;
+}
+
+pre,
+p {
+  margin: 0;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("https://fonts.googleapis.com/css2?family=Roboto&display=swap") format("opentype");
+}
+.footer {
+  font-family: "Roboto";
+  width: 100%;
+  background-color: rgb(247, 247, 247);
+  margin: 0px auto 0px auto;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgb(84, 84, 84);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}
+.footer__icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  width: 1.0771484375em;
+}
+.footer__authors {
+  text-decoration: underline;
+}
+.footer__sign {
+  display: flex;
+  align-items: center;
+}
+.footer__sign--center {
+  display: flex;
+  align-items: center;
+}
+.footer__text {
+  font-family: "Roboto";
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    height: 77px;
+    flex-direction: row;
+    justify-content: center;
+  }
+}/*# sourceMappingURL=index.css.map */

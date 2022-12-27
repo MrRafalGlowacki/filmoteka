@@ -1,0 +1,49 @@
+
+.library-header{
+    margin:0;
+    padding:0;
+   
+    background-image:linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/library_background.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+
+    &__list{
+        padding-left:0;
+        padding-top:49px;
+        padding-bottom:65px;
+        width:280px;
+        
+        margin:0 auto;
+        list-style-type: none;
+        display:flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content:space-between;
+
+
+
+    }
+
+    &__btn{
+        padding-top:14px;
+        padding-bottom:12px;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 133%;
+        color: #FFFFFF;
+        background-color:transparent;
+        border: 1px solid #FFFFFF;
+        border-radius: 5px;
+        text-transform: uppercase;
+        width:130px;
+
+       
+
+    }
+
+  
+
+}
+ 

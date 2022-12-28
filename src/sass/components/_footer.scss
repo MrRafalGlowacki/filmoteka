@@ -1,9 +1,3 @@
-pre,
-p {
-  margin: 0;
-  // powyższe do usunięcia, zrobi to modern normalize
-}
-
 @font-face {
   font-family: 'Roboto';
   src: url('https://fonts.googleapis.com/css2?family=Roboto&display=swap')
@@ -34,17 +28,15 @@ p {
   }
   &__authors {
     text-decoration: underline;
+    margin: 0;
   }
   &__sign {
     display: flex;
     align-items: center;
-    &--center {
-      display: flex;
-      align-items: center;
-    }
   }
   &__text {
     font-family: 'Roboto';
+    margin: 0;
   }
 }
 

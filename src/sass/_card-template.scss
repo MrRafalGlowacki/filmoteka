@@ -1,0 +1,123 @@
+.card {
+  display: flex;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 12px;
+  flex-direction: column;
+  width: 240px;
+  margin: auto;
+  padding: 48px 20px 41px 20px;
+}
+.card__image {
+  width: 240px;
+  height: 357px;
+  padding-bottom: 30px;
+}
+.card__title {
+  font-size: 20px;
+  text-transform: uppercase;
+  padding-bottom: 20px;
+}
+.card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 20px;
+}
+.card__info-details {
+  display: flex;
+  flex-direction: row;
+  gap: 51px;
+}
+.card__info-rate {
+  display: flex;
+}
+.rate {
+  text-align: center;
+  background: #ff6b01;
+  border-radius: 5px;
+  width: 36px;
+  height: 16px;
+}
+.card__info-popularity {
+  display: flex;
+  flex-direction: row;
+  gap: 59px;
+}
+.card__info-title {
+  display: flex;
+  flex-direction: row;
+  gap: 48px;
+}
+.card__info-gene {
+  display: flex;
+  flex-direction: row;
+  gap: 82px;
+}
+.card__about-title {
+  text-transform: uppercase;
+}
+.card__about-text {
+  text-transform: none;
+  padding-top: 10px;
+  padding-bottom: 21px;
+}
+.card__buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+.watched-btn {
+  padding: 0px;
+  width: 113px;
+  height: 44px;
+  text-transform: uppercase;
+  background: #ff6b01;
+  color: #ffffff;
+  border-radius: 5px;
+  border: 0px;
+}
+.queue-btn {
+  background: none;
+  padding: 0px;
+  width: 113px;
+  height: 44px;
+  text-transform: uppercase;
+  border: 1px solid #000000;
+  border-radius: 5px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .card {
+    width: 560px;
+    flex-direction: row;
+    padding: 42px 30px 40px 28px;
+  }
+  .card__image {
+    width: 264px;
+    height: 374px;
+    padding: 0px;
+    padding-right: 32px;
+  }
+
+  .card__about-title {
+    width: 264px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .card {
+    width: 822px;
+    padding: 50px 30px 40px 30px;
+    flex-direction: row;
+  }
+  .card__image {
+    width: 396px;
+    height: 478px;
+    padding: 0px;
+    padding-right: 30px;
+  }
+  .card__about-title {
+    width: 396px;
+  }
+}

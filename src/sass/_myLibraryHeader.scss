@@ -3,7 +3,7 @@
     margin:0;
     padding:0;
    
-    background-image:linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/library_background.jpg');
+    background-image:linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/library_background.jpg);
     background-repeat:no-repeat;
     background-size:cover;
     min-height:230px;
@@ -57,10 +57,18 @@
     height:121px;
 }
 
+@media screen and (max-width:768px) and (min-device-pixel-ratio:2),
+(min-resolution:192dpi),
+(min-resolution:2dppx) {
+    .library-header {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.56)rgba(0, 0, 0, 0.56)), url(../images/library_background@2x.jpg);
+    }
+}
+
 @media screen and (min-width:768px){
     .library-header{
-        background-image: linear-gradient(rgba(0, 0, 0, 0.56)rgba(0, 0, 0, 0.56)), url('../images/library_background-tablet.jpg');
-
+        background-image: linear-gradient(rgba(0, 0, 0, 0.56)rgba(0, 0, 0, 0.56)), url(../images/library_background-tablet.jpg);
+        
         &__list{
             width:287px;
         }
@@ -70,15 +78,31 @@
     }
 }
 
+@media screen and (max-width:1024px) and (min-device-pixel-ratio:2),
+(min-resolution:192dpi),
+(min-resolution:2dppx) {
+    .library-header {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.56)rgba(0, 0, 0, 0.56)), url(../images/library_background-tablet@2x.jpg);
+    }
+}
+
 
 @media screen and (min-width:1024px) {
     .library-header {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.56)rgba(0, 0, 0, 0.56)), url('../images/library_background-desktop.jpg');
+        background-image: linear-gradient(rgba(0, 0, 0, 0.56)rgba(0, 0, 0, 0.56)), url(../images/library_background-desktop.jpg);
         
 
 
         &__btn {
             width: 136px;
         }
+    }
+}
+
+@media (min-device-pixel-ratio:2),
+(min-resolution:192dpi),
+(min-resolution:2dppx) {
+    .library-header {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.56)rgba(0, 0, 0, 0.56)), url(../images/library_background-desktop@2x.jpg);
     }
 }

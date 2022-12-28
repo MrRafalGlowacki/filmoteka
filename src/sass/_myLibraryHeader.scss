@@ -6,6 +6,7 @@
     background-image:linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('../images/library_background.jpg');
     background-repeat:no-repeat;
     background-size:cover;
+    min-height:230px;
 
     &__list{
         padding-left:0;
@@ -39,6 +40,11 @@
         text-transform: uppercase;
         width:130px;
 
+        &:active{
+            background-color: #FF6B01;
+
+        }
+
        
 
     }
@@ -46,4 +52,33 @@
   
 
 }
- 
+
+.placeforinclude{
+    height:121px;
+}
+
+@media screen and (min-width:768px){
+    .library-header{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.56)rgba(0, 0, 0, 0.56)), url('../images/library_background-tablet.jpg');
+
+        &__list{
+            width:287px;
+        }
+        &__btn{
+            width:136px;
+        }
+    }
+}
+
+
+@media screen and (min-width:1024px) {
+    .library-header {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.56)rgba(0, 0, 0, 0.56)), url('../images/library_background-desktop.jpg');
+        
+
+
+        &__btn {
+            width: 136px;
+        }
+    }
+}

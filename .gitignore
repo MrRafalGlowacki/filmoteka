@@ -1,3 +1,5 @@
+node_modules
+
 #Junk
 .DS_Store
 .vscode/

@@ -1,3 +1,9 @@
-@import './common';
-@import './example';
+@import './base/container';
+@import './base/common';
+// @import './common';
+// @import './example';
+@import './components/header-search';
+@import './components/header';
+@import './components/footer'
 @import './card-template';
+

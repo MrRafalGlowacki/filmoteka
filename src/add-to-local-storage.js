@@ -12,6 +12,7 @@ const queueStorage = event => {
     }
   }
   localStorage.setItem('added-to-queue', JSON.stringify(movie));
+  localStorage.removeItem('added-to-watched');
   alert('movie added to queue');
 };
 
@@ -26,6 +27,7 @@ const watchedStorage = event => {
     }
   }
   localStorage.setItem('added-to-watched', JSON.stringify(movie));
+  localStorage.removeItem('added-to-queue');
   alert('movie added to watched');
 };
 

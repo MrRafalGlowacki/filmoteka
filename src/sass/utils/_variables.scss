@@ -1,0 +1,13 @@
+$colors: (
+  'basic-color': #ffffff,
+  'basic-lighter': #f7f7f7,
+  'button-color': #ff6b01,
+  'bgd': #545454,
+  'bgd-dark': #0000008f,
+);
+
+@function getColor($key) {
+  @return map-get($colors, $key);
+}
+
+// aby użyć koloru w projecie wpisujemy w sekcji np background-color: getColor("main-color");

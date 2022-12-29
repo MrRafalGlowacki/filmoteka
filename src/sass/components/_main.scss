@@ -47,7 +47,6 @@
   .movie-card {
     width: 294px;
     height: 440px;
-    border-radius: 5px;
 
     &__image {
       width: 293px;
@@ -55,11 +54,10 @@
     }
   }
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1024px) {
   .movie-card {
     width: 274px;
     height: 440px;
-    border-radius: 5px;
 
     &__image {
       width: 274px;

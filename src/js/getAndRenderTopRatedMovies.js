@@ -2,7 +2,7 @@
 pliki nie dodane do index.html, index.js, index.sass
 */
 
-const main = document.querySelector('.main2'); // main2(tutaj dodtakowo w main.html i main.scss)  jest testowo w celu sprawdzenia pozycjonowania elementow
+const main = document.querySelector('.main-box'); // main2(tutaj dodtakowo w main.html i main.scss)  jest testowo w celu sprawdzenia pozycjonowania elementow
 import { getMovies } from './getMovies';
 import { render } from './renderMovieCard';
 

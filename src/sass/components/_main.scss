@@ -43,6 +43,17 @@
   }
 }
 
+.no-movies {
+  font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 900;
+  font-size: 30px;
+  height: calc(100vh - 39vh);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
 @media screen and (min-width: 768px) {
   .movie-card {
     width: 294px;
@@ -53,7 +64,11 @@
       height: 398px;
     }
   }
+  .no-movies {
+    font-size: 50px;
+  }
 }
+
 @media screen and (min-width: 1024px) {
   .movie-card {
     width: 274px;

@@ -16,11 +16,14 @@ async function renderFoundMovies(event) {
   if (!searchQuery) {
     alert('Enter movie title');
   } else {
-    main.innerHTML = '';
     const moviesList = await getMovies(searchQuery, currentPage);
     if (!moviesList.results.length) {
-      main.innerHTML = 'No movie found';
+      main.innerHTML = `<div class="no-movies">
+      No movie found
+      </div > `;
+      main.insertAdjacentHTML('beforeend', render(elem));
     } else {
+      main.innerHTML = '';
       console.log(moviesList);
       moviesList.results.map(elem => {
         main.insertAdjacentHTML('beforeend', render(elem));
@@ -29,14 +32,4 @@ async function renderFoundMovies(event) {
   }
 }
 
-// const renderMovieCard = async () => {
-//   try {
-//     const response = await getMovies();
-//     response.data.results.map(elem => {
-//       main.insertAdjacentHTML('beforeend', render(elem));
-//     });
-//   } catch (error) {
-//     console.log('err ', error);
-//   }
-// };
 export { renderFoundMovies };

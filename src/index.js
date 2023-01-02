@@ -1,5 +1,9 @@
-import './add-to-local-storage.js';
+// import './add-to-local-storage.js';
+import { renderMovieCard } from './js/getAndRenderTopRatedMovies';
 import { getMovies } from './getMovies';
+window.onload = function () {
+  renderMovieCard();
+};
 
 const inputSearch = document.querySelector("input[name='searchQuery']");
 const searchButton = document.querySelector('.search-form__btn');

@@ -18,10 +18,14 @@ async function renderFoundMovies(event) {
   } else {
     main.innerHTML = '';
     const moviesList = await getMovies(searchQuery, currentPage);
-    console.log(moviesList);
-    moviesList.results.map(elem => {
-      main.insertAdjacentHTML('beforeend', render(elem));
-    });
+    if (!moviesList.results.length) {
+      main.innerHTML = 'No movie found';
+    } else {
+      console.log(moviesList);
+      moviesList.results.map(elem => {
+        main.insertAdjacentHTML('beforeend', render(elem));
+      });
+    }
   }
 }
 

@@ -1,13 +1,13 @@
+.main {
+  padding: 20px 0 40px 0;
+}
 .main-box {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  max-width: 1200px;
+  flex-direction: column;
   row-gap: 20px;
-  column-gap: 30px;
-  padding: 0;
+  align-items: center;
 }
+
 .movie-card {
   width: 280px;
   height: 443px;
@@ -43,7 +43,20 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .main {
+    padding: 60px 0 50px 0;
+    display: flex;
+    justify-content: center;
+  }
+  .main-box {
+    width: calc(2 * 294px + 30px);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 30px;
+    column-gap: 30px;
+  }
   .movie-card {
     width: 294px;
     height: 440px;
@@ -55,6 +68,20 @@
   }
 }
 @media screen and (min-width: 1024px) {
+  .main {
+    display: flex;
+    justify-content: center;
+    padding: 60px 0 50px 0;
+  }
+  .main-box {
+    width: calc(3 * 274px + 60px);
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 30px;
+    column-gap: 30px;
+  }
   .movie-card {
     width: 274px;
     height: 440px;

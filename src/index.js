@@ -1,4 +1,5 @@
-// import './add-to-local-storage.js';
+import { addToLocalStorage } from './js/addToLocalStorage.js';
+import { modalWindow } from './js/modalWindow.js';
 import { renderMovieCard } from './js/getAndRenderTopRatedMovies';
 import { renderFoundMovies } from './js/searchAndRenderMovies.js';
 

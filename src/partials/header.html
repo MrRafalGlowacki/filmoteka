@@ -1,22 +1,39 @@
-<header class="header container">
-  <a class="header__logo" href="index.html">
-    <svg class="icon" width="24" height="24">
-      <use href="/src/images/icons.svg#icon-film"></use>
-    </svg>
-    <p class="header__logo-word">Filmoteka</p> 
-  </a>
-  <nav>
-    <ul class="header__menu">
-      <li>
-        <a class="header__menu-contact header__menu-underline-permanently" href="index.html">
-          HOME
-        </a>
-      </li>
-      <li>
-        <a class="header__menu-contact header__menu-underline-hover" href="library.html">
-          MY LIBRARY
-        </a>
-      </li>
-    </ul>
-  </nav>
+<header class="header">
+  <div class="container">
+    <div class="header__info-top">
+      <a class="header__logo" href="index.html">
+        <svg class="icon icon-logo" width="24" height="24">
+          <use href="/src/images/icons.svg#icon-film"></use>
+        </svg>
+        <p class="header__logo-word">Filmoteka</p> 
+      </a>
+      <nav>
+        <ul class="header__menu">
+          <li>
+            <a class="header__menu-contact header__menu-underline-permanently" href="index.html">
+              HOME
+            </a>
+          </li>
+          <li>
+            <a class="header__menu-contact header__menu-underline-hover" href="library.html">
+              MY LIBRARY
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header__search-form">
+      <form class="header__wrapper-input" id="search-form">
+          <input class="header__search-form-input" type="text" name="searchQuery" placeholder="Search movies..." />
+          <button class="header__search-form-btn" type="submit">
+            <svg class="icon icon-search" width="12" height="12">
+              <use href="/src/images/icons.svg#icon-search"></use>
+            </svg>
+          </button>  
+      </form>
+    </div>
+   <!--  <span class="notification off">
+      Search result not successful. Enter the correct movie name
+    </span> -->
+  </div>
 </header>

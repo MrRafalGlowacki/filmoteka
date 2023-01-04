@@ -17,33 +17,41 @@
         align-items: center;
         gap: 10px;
 
-        color: #afb1b8;    
-        transition-duration: 250ms;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        color: white;
+        
+            
     }
 /* Logo bedzie dopracowane pozniej z SVG */
-    .icon-logo{
-        fill: black; 
+/* aby dodac color nalezy usunac fill="none" w pliku icons.svg */
+    /* .icon-logo {
+        fill: #afb1b8;
     }
 
-    &__logo:focus,
+    &__logo:hover .icon,
+    &__logo:focus  .icon {
+        fill: #FF6B08;  
+    }  */
+
+   /*  &__logo:focus,
     &__logo:hover {
         color: #FF6B08;
-    }
+    } */
 
+  /* ---------------------------------------------------------------------- */
     &__logo-word {
         font-weight: 500;
         font-size: 30px;
         line-height: 35px;
         
         margin: 0;
-
+        transition-duration: 250ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-   /*  &__logo-word:focus,
+    &__logo-word:focus,
     &__logo-word:hover {
         color: #FF6B08;
-    } */
+    }
 
     &__menu {
         display: flex;
@@ -136,7 +144,7 @@
                 background-image: url(../images/image-header/image-header-tablet@3x.jpg);
             }
             &__info-top {
-                padding: 41px 56px 41px 51px;
+                padding: 41px 51px 41px 51px;
             }
 
             &__search-form {     
@@ -190,7 +198,8 @@
 
         color: getColor("basic-color");
         border: none;
-        border-bottom: 1px solid getColor("basic-color");   
+        border-bottom: 1px solid getColor("basic-color");  
+         
     }
 
     &__search-form-input {
@@ -208,6 +217,7 @@
     &__search-form-btn {
         background-color: rgba(0,0,0,0);
         border: none;
+        cursor: pointer;
     }
 
 }

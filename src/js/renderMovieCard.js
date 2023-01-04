@@ -5,6 +5,7 @@ const render = elem => {
   <div class="movie-card__label">
     <p class="movie-card__title">${elem.original_title}</p>
     <p class="movie-card__genre-year">Drama, Action | ${elem.release_date}</p> 
+    <p class="movie-card__id">${elem.id}</p> 
   </div>
 </div>
 `;

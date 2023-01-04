@@ -14,7 +14,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 610px;
+  width: 630px;
   height: 685px;
   // background-color: getColor(basic-color);
   transition-property: transform;
@@ -77,8 +77,8 @@
 .team-container {
   background-color: getColor(basic-lighter);
   // height: 705px;
-  padding-top: 20px;
-  padding:10px;
+  // padding-top: 20px;
+  padding: 20px;
 }
 .team {
   display: flex;
@@ -128,26 +128,31 @@
 }
 @media screen and (min-width: 768px) {
   .modal {
-    width: 700px;
+    width: 770px;
     height: 800px;
   }
   .team {
-    flex-direction: row;
-    flex-wrap: wrap;
+    // flex-direction: row;
+    // flex-wrap: wrap;
     &__members {
-      width: 354px;
+      width: 230px;
     }
   }
 }
 @media screen and (min-width: 1025px) {
   .modal {
-    width: 1020px;
-    height: 800px;
+    width: 900px;
+    height: 1100px;
   }
   .team {
     // flex-wrap: nowrap;
-    justify-content: space-between;
+    // justify-content: space-between;
+    gap: 20px;
     &__members {
+      width: 270px;
+      height: 400px
+    }
+    &__img {
       width: 270px;
     }
   }

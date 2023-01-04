@@ -1,17 +1,25 @@
 .header-library {
 
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-   
+    
+    &__info-top {
+        width: 100%;
+        justify-content: space-between;
+        display: flex;
+        @media screen and (max-width: 767px) { 
+            padding-top: 41px;
+        }
+        @media screen and (min-width: 768px) and (max-width: 1024px) {
+            padding: 41px 56px 0 51px;
+        }
+         @media screen and (min-width: 1025px) {
+            padding: 41px 51px 0 51px;
+        }
+    }
 
     &__logo {
         display: flex;
         align-items: center;
-
-        gap: 12px;
-        margin-top: 41px;
-        margin-left: 6px;
+        gap: 10px;
 
         color: getColor("basic-color");
     }
@@ -29,6 +37,9 @@
         line-height: 35px;
 
         margin: 0;
+        @media screen and (max-width: 767px) { 
+            display: none;
+        }
     }
 
     &__menu {
@@ -36,7 +47,7 @@
 
         gap: 39px;
         margin: 0;
-        padding: 0 61px 0 0;
+        padding-top: 12px;
     }
 
     &__menu-contact {
@@ -79,8 +90,5 @@
 
     &__menu-underline-hover:hover::after {
         opacity: 1;
-    }
-
-    
- 
+    } 
 }

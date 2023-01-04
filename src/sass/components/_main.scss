@@ -41,6 +41,11 @@
     line-height: calc(14.06 / 12);
     color: rgba(255, 107, 8, 1);
   }
+  &__id {
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+  }
 }
 .no-movies {
   font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;

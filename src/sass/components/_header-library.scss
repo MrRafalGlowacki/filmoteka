@@ -24,13 +24,6 @@
         color: getColor("basic-color");
     }
 
-    &__logo:focus,
-    &__logo:hover {
-        color: getColor("button-color");
-        transition-duration: 250ms;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
     &__logo-word {
         font-weight: 500;
         font-size: 30px;
@@ -40,6 +33,13 @@
         @media screen and (max-width: 767px) { 
             display: none;
         }
+    }
+
+    &__logo-word:focus,
+    &__logo-word:hover {
+        color: getColor("button-color");
+        transition-duration: 250ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     &__menu {

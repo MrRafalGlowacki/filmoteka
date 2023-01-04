@@ -9,11 +9,11 @@
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.modal {
+.students-modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  // transform: translate(-50%, -50%);
   width: 630px;
   height: 685px;
   // background-color: getColor(basic-color);
@@ -21,12 +21,33 @@
   transition-duration: 500ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transform: translate(-50%, -50%) scale(1);
+  &__close-btn {
+    position: absolute;
+    border: none;
+    top: 8px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+    &--svg {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      &:hover,
+      &:active,
+      &:focus {
+        fill: getColor(button-color);
+      }
+    }
+  }
 }
 .is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  & .modal {
+  & .students-modal {
     transform: translate(-50%, -50%) scale(0.1);
   }
 }
@@ -127,7 +148,7 @@
   }
 }
 @media screen and (min-width: 768px) {
-  .modal {
+  .students-modal {
     width: 770px;
     height: 800px;
   }
@@ -140,17 +161,16 @@
   }
 }
 @media screen and (min-width: 1025px) {
-  .modal {
+  .students-modal {
     width: 900px;
     height: 1100px;
+    top: 60%;
   }
   .team {
-    // flex-wrap: nowrap;
-    // justify-content: space-between;
     gap: 20px;
     &__members {
       width: 270px;
-      height: 400px
+      height: 400px;
     }
     &__img {
       width: 270px;

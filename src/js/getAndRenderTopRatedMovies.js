@@ -6,9 +6,14 @@ import { render } from './renderMovieCard';
 let genreList;
 const renderMovieCard = async () => {
   try {
-    const response = await getMovies();
-    genreList = await getGenresList();
-    response.data.results.map(elem => {
+    const PromisesArray = [];
+    PromisesArray.push(getMovies());
+    PromisesArray.push(getGenresList());
+    const getMoviesAndGenres = await Promise.all(PromisesArray);
+    const movies = getMoviesAndGenres[0];
+    genreList = getMoviesAndGenres[1];
+
+    movies.data.results.map(elem => {
       main.insertAdjacentHTML('beforeend', render(elem));
     });
   } catch (error) {

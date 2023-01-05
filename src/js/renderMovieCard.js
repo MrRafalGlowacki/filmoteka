@@ -2,15 +2,15 @@ import { getGenreList } from './getAndRenderTopRatedMovies';
 const getMovieYear = date => {
   return date.substring(0, 4);
 };
-let result = '';
-const renderGenres = (elemGenresIds, genreList) => {
-  result = '';
-  elemGenresIds.map(id => {
+let singleMovieGenres = '';
+const renderGenres = (movieGenresIds, genreList) => {
+  singleMovieGenres = '';
+  movieGenresIds.map(id => {
     genreList.map(elem => {
       if (elem.id === id) {
-        id != elemGenresIds[elemGenresIds.length - 1]
-          ? (result = result + elem.name + ', ')
-          : (result = result + elem.name);
+        id != movieGenresIds[movieGenresIds.length - 1]
+          ? (singleMovieGenres = singleMovieGenres + elem.name + ', ')
+          : (singleMovieGenres = singleMovieGenres + elem.name);
       }
     });
   });
@@ -26,7 +26,7 @@ const render = elem => {
   }'}>
   <div class="movie-card__label">
     <p class="movie-card__title">${elem.original_title}</p>
-    <p class="movie-card__genre-year">${result} | ${getMovieYear(
+    <p class="movie-card__genre-year">${singleMovieGenres} | ${getMovieYear(
     elem.release_date
   )}</p> 
     <p class="movie-card__id">${elem.id}</p> 

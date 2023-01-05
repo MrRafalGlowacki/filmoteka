@@ -1,3 +1,8 @@
+.marker {
+  margin: 0px;
+  min-width: 69px;
+  margin-right: 39px;
+}
 .modal {
   display: none;
   position: fixed;
@@ -37,7 +42,6 @@
   &__info-details {
     display: flex;
     flex-direction: row;
-    gap: 46px;
   }
   &__info-rate {
     display: flex;
@@ -45,17 +49,14 @@
   &__info-popularity {
     display: flex;
     flex-direction: row;
-    gap: 59px;
   }
   &__info-title {
     display: flex;
     flex-direction: row;
-    gap: 47px;
   }
   &__info-gene {
     display: flex;
     flex-direction: row;
-    gap: 80px;
   }
   &__about-title {
     text-transform: uppercase;
@@ -74,6 +75,15 @@
     display: flex;
     flex-direction: row;
     gap: 15px;
+  }
+  &__close {
+    background-color: #ffffff;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
   }
 }
 .rate {
@@ -109,17 +119,6 @@
   border: 1px solid #000000;
   border-radius: 5px;
 }
-.modal-close {
-  background-color: #ffffff;
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  margin: 0px;
-  padding: 0px;
-  border: none;
-  font-size: 16px;
-  font-weight: 1;
-}
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .modal {
@@ -141,6 +140,9 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .marker {
+    margin-right: 83px;
+  }
   .modal {
     width: 822px;
     padding: 50px 30px 40px 30px;

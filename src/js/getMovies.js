@@ -13,7 +13,6 @@ const getMovies = async (pageNumber = 1) => {
       },
     });
     loader.style.display = 'none';
-    console.log(response);
     return response;
   } catch (error) {
     loader.style.display = 'none';

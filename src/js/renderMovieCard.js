@@ -3,7 +3,7 @@ const getMovieYear = date => {
   return date.substring(0, 4);
 };
 let singleMovieGenres = '';
-const renderGenres = (movieGenresIds, genreList) => {
+const getMovieGenres = (movieGenresIds, genreList) => {
   singleMovieGenres = '';
   movieGenresIds.map(id => {
     genreList.map(elem => {
@@ -18,7 +18,7 @@ const renderGenres = (movieGenresIds, genreList) => {
 
 const render = elem => {
   const genreList = getGenreList();
-  renderGenres(elem.genre_ids, genreList.data.genres);
+  getMovieGenres(elem.genre_ids, genreList.data.genres);
   return `
 <div class="movie-card">
   <img class="movie-card__image" alt="" src='https://image.tmdb.org/t/p/w500/${

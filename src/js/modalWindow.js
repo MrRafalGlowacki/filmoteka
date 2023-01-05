@@ -24,10 +24,14 @@ const modalInformation = async (
   });
 
   modalGene.textContent = movieGenres.join(', ');
-  modalRate.textContent = Math.round(response.data.vote_average * 100) / 100;
+  modalRate.textContent = (
+    Math.round(response.data.vote_average * 10) / 10
+  ).toFixed(1);
   modalTotalRate.textContent = response.data.vote_count;
   modalTitle.textContent = response.data.title;
-  modalPopularity.textContent = response.data.popularity;
+  modalPopularity.textContent = (
+    Math.round(response.data.popularity * 10) / 10
+  ).toFixed(1);
   modalInfoTitle.textContent = response.data.original_title;
   modalAbout.textContent = response.data.overview;
 };

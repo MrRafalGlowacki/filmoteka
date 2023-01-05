@@ -1,3 +1,10 @@
+.marker {
+  margin: 0px;
+  min-width: 69px;
+  font-size: 12px;
+  line-height: 1.34;
+  margin-right: 39px;
+}
 .modal {
   display: none;
   position: fixed;
@@ -37,7 +44,6 @@
   &__info-details {
     display: flex;
     flex-direction: row;
-    gap: 46px;
   }
   &__info-rate {
     display: flex;
@@ -45,17 +51,14 @@
   &__info-popularity {
     display: flex;
     flex-direction: row;
-    gap: 59px;
   }
   &__info-title {
     display: flex;
     flex-direction: row;
-    gap: 47px;
   }
   &__info-gene {
     display: flex;
     flex-direction: row;
-    gap: 80px;
   }
   &__about-title {
     text-transform: uppercase;
@@ -136,6 +139,9 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .marker {
+    margin-right: 83px;
+  }
   .modal {
     width: 822px;
     padding: 50px 30px 40px 30px;

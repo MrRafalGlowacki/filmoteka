@@ -217,7 +217,7 @@
     &__search-form-btn {
         background-color: rgba(0,0,0,0);
         border: none;
-        cursor: pointer;
+        
     }
 
 }
@@ -226,3 +226,6 @@
    color:  getColor("basic-color");
 }
 
+.icon-search {
+    cursor: pointer;
+}

@@ -24,8 +24,8 @@
     </div>
     <div class="header__search-form">
       <form class="header__wrapper-input" id="search-form">
-          <input class="header__search-form-input" type="text" name="searchQuery" placeholder="Search movies..." />
-          <button class="header__search-form-btn" type="submit">
+          <input class="header__search-form-input" type="text" name="searchQuery" value="What will you be looking for?" onfocus="if(this.value=='What will you be looking for?'){this.value=''}" onblur="if(this.value==''){this.value='What will you be looking for?'}" autocomplete="off" />
+          <button class="header__search-form-btn" type="button">
             <svg class="icon icon-search" width="12" height="12">
               <use href="/src/images/icons.svg#icon-search"></use>
             </svg>

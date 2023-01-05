@@ -38,11 +38,20 @@
         text-transform: uppercase;
         width:130px;
         cursor: pointer;
-
+        transition-duration: 250ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+       
         &:active{
             background-color: getColor("button-color");
 
         }
+    }
+
+    &__btn:hover, &__btn:focus {
+        transform: scale(1.1);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+        background-color: getColor("button-color")
     }
 
     @media screen and (max-width: 767px) {

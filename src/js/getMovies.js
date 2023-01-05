@@ -13,6 +13,7 @@ const getMovies = async (pageNumber = 1) => {
       },
     });
     loader.style.display = 'none';
+    console.log(response);
     return response;
   } catch (error) {
     loader.style.display = 'none';
@@ -20,4 +21,3 @@ const getMovies = async (pageNumber = 1) => {
   }
 };
 export { getMovies };
-// ?fields=webformatURL,largeImageURL,tags,likes,views,comments,downloads

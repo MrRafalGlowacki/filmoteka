@@ -72,6 +72,15 @@
     flex-direction: row;
     gap: 15px;
   }
+  &__close {
+    background-color: #ffffff;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+  }
 }
 .rate {
   text-align: center;
@@ -105,17 +114,6 @@
   text-transform: uppercase;
   border: 1px solid #000000;
   border-radius: 5px;
-}
-.modal-close {
-  background-color: #ffffff;
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  margin: 0px;
-  padding: 0px;
-  border: none;
-  font-size: 16px;
-  font-weight: 1;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {

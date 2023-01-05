@@ -18,12 +18,12 @@ const queueStorage = event => {
       watchedMovies.splice(deleteWatched, 1);
       localStorage.setItem('added-to-watched', JSON.stringify(watchedMovies));
       return Notiflix.Notify.info(
-        'movie remove from watched and added to queue'
+        'Movie remove from watched and added to queue'
       );
     }
-    return Notiflix.Notify.success('movie added to queue');
+    return Notiflix.Notify.success('Movie added to queue');
   } else {
-    return Notiflix.Notify.failure('movie already in queue');
+    return Notiflix.Notify.failure('Movie already in queue');
   }
 };
 
@@ -39,12 +39,12 @@ const watchedStorage = event => {
       queueMovies.splice(deleteQueue, 1);
       localStorage.setItem('added-to-queue', JSON.stringify(queueMovies));
       return Notiflix.Notify.info(
-        'movie remove from queue and added to watched'
+        'Movie remove from queue and added to watched'
       );
     }
-    return Notiflix.Notify.success('movie added to watched');
+    return Notiflix.Notify.success('Movie added to watched');
   } else {
-    return Notiflix.Notify.failure('movie already in watched');
+    return Notiflix.Notify.failure('Movie already in watched');
   }
 };
 

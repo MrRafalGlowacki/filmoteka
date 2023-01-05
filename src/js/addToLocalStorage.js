@@ -1,34 +1,51 @@
+import Notiflix from 'notiflix';
 const addToQueue = document.querySelector('.queue-btn');
 const addToWatched = document.querySelector('.watched-btn');
+const modalId = document.querySelector('.modal__id');
+
+let queueMovies = [];
+let watchedMovies = [];
 
 const queueStorage = event => {
-  const movieCard = 'exampleMovieCard';
-  const movieInformation = 'exampleMovieInformation';
-  const movie = [movieCard, movieInformation];
-  if (localStorage.getItem('added-to-queue') !== null) {
-    const storageMovie = localStorage.getItem('added-to-queue');
-    if (JSON.parse(storageMovie)[1] === movieInformation) {
-      return alert('movie already in queue');
+  const queueMovieId = modalId.textContent;
+
+  if (!queueMovies.includes(queueMovieId)) {
+    queueMovies.push(queueMovieId);
+    console.log('queue', queueMovies);
+    localStorage.setItem('added-to-queue', JSON.stringify(queueMovies));
+    let deleteWatched = watchedMovies.indexOf(queueMovieId);
+    if (deleteWatched > -1) {
+      watchedMovies.splice(deleteWatched, 1);
+      localStorage.setItem('added-to-watched', JSON.stringify(watchedMovies));
+      return Notiflix.Notify.info(
+        'movie remove from watched and added to queue'
+      );
     }
+    return Notiflix.Notify.success('movie added to queue');
+  } else {
+    return Notiflix.Notify.failure('movie already in queue');
   }
-  localStorage.setItem('added-to-queue', JSON.stringify(movie));
-  localStorage.removeItem('added-to-watched');
-  alert('movie added to queue');
 };
 
 const watchedStorage = event => {
-  const movieCard = 'exampleMovieCard';
-  const movieInformation = 'exampleMovieInformation';
-  const movie = [movieCard, movieInformation];
-  if (localStorage.getItem('added-to-watched') !== null) {
-    const storageMovie = localStorage.getItem('added-to-watched');
-    if (JSON.parse(storageMovie)[1] === movieInformation) {
-      return alert('movie already in watched');
+  const watchedMovieId = modalId.textContent;
+
+  if (!watchedMovies.includes(watchedMovieId)) {
+    watchedMovies.push(watchedMovieId);
+    console.log('watched', watchedMovies);
+    localStorage.setItem('added-to-watched', JSON.stringify(watchedMovies));
+    let deleteQueue = queueMovies.indexOf(watchedMovieId);
+    if (deleteQueue > -1) {
+      queueMovies.splice(deleteQueue, 1);
+      localStorage.setItem('added-to-queue', JSON.stringify(queueMovies));
+      return Notiflix.Notify.info(
+        'movie remove from queue and added to watched'
+      );
     }
+    return Notiflix.Notify.success('movie added to watched');
+  } else {
+    return Notiflix.Notify.failure('movie already in watched');
   }
-  localStorage.setItem('added-to-watched', JSON.stringify(movie));
-  localStorage.removeItem('added-to-queue');
-  alert('movie added to watched');
 };
 
 addToQueue.addEventListener('click', queueStorage);

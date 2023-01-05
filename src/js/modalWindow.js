@@ -9,8 +9,8 @@ const modalInfoTitle = document.querySelector('.orginal-title');
 const modalPopularity = document.querySelector('.popularity');
 const modalRate = document.querySelector('.rate');
 const modalTotalRate = document.querySelector('.rate__total');
-
 let isModalOpen = false;
+const modalId = document.querySelector('.modal__id');
 let movieId = '';
 const API_KEY = 'b942b8bf626a04f48b07153a95ee51a0';
 
@@ -34,6 +34,7 @@ const modalInformation = async (
   ).toFixed(1);
   modalInfoTitle.textContent = response.data.original_title;
   modalAbout.textContent = response.data.overview;
+  modalId.textContent = response.data.id;
 };
 
 const modalWindowOpen = event => {
@@ -71,3 +72,5 @@ addEventListener('click', modalWindowOpen);
 modalClose.addEventListener('click', closeModalWindow);
 addEventListener('keydown', clickEscape);
 addEventListener('click', closeByClick);
+export { modalInformation };
+

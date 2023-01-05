@@ -3,7 +3,7 @@ import { render } from './renderMovieCard';
 
 const main = document.querySelector('.main-box');
 const inputSearch = document.querySelector("input[name='searchQuery']");
-const searchButton = document.querySelector('.header__search-form-btn');
+const searchButton = document.querySelector('.icon-search');
 
 let currentPage = 1;
 

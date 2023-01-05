@@ -1,10 +1,18 @@
+const getMovieYear = date => {
+  return date.substring(0, 4);
+};
+
 const render = elem => {
   return `
 <div class="movie-card">
-  <img class="movie-card__image" alt="" src='https://image.tmdb.org/t/p/w500/${elem.poster_path}'}>
+  <img class="movie-card__image" alt="" src='https://image.tmdb.org/t/p/w500/${
+    elem.poster_path
+  }'}>
   <div class="movie-card__label">
     <p class="movie-card__title">${elem.original_title}</p>
-    <p class="movie-card__genre-year">Drama, Action | ${elem.release_date}</p> 
+    <p class="movie-card__genre-year">Drama, Action | ${getMovieYear(
+      elem.release_date
+    )}</p> 
     <p class="movie-card__id">${elem.id}</p> 
   </div>
 </div>

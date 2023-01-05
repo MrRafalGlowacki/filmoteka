@@ -68,6 +68,9 @@
     margin: 0px;
     line-height: 1.67;
   }
+  &__id {
+    display: none;
+  }
   &__buttons {
     display: flex;
     flex-direction: row;

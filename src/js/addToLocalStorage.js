@@ -11,7 +11,6 @@ const queueStorage = event => {
 
   if (!queueMovies.includes(queueMovieId)) {
     queueMovies.push(queueMovieId);
-    console.log('queue', queueMovies);
     localStorage.setItem('added-to-queue', JSON.stringify(queueMovies));
     let deleteWatched = watchedMovies.indexOf(queueMovieId);
     if (deleteWatched > -1) {
@@ -32,7 +31,6 @@ const watchedStorage = event => {
 
   if (!watchedMovies.includes(watchedMovieId)) {
     watchedMovies.push(watchedMovieId);
-    console.log('watched', watchedMovies);
     localStorage.setItem('added-to-watched', JSON.stringify(watchedMovies));
     let deleteQueue = queueMovies.indexOf(watchedMovieId);
     if (deleteQueue > -1) {

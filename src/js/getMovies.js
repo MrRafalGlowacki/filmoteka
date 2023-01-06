@@ -20,4 +20,3 @@ const getMovies = async (pageNumber = 1) => {
   }
 };
 export { getMovies };
-// ?fields=webformatURL,largeImageURL,tags,likes,views,comments,downloads

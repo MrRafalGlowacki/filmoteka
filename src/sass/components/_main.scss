@@ -10,13 +10,11 @@
   flex-direction: column;
   row-gap: 20px;
   align-items: center;
-  padding-top: 20px;
 }
 
 .movie-card {
   width: 280px;
   height: 443px;
-
   display: flex;
   flex-direction: column;
 
@@ -28,7 +26,6 @@
     border-radius: 5px;
   }
   &__label {
-    font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
     padding-top: 10px;
     align-items: center;
     font-size: 12px;
@@ -53,7 +50,6 @@
   }
 }
 .no-movies {
-  font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 900;
   font-size: 30px;
   height: calc(100vh - 39vh);
@@ -77,7 +73,6 @@
     flex-wrap: wrap;
     row-gap: 30px;
     column-gap: 30px;
-    padding-top: 60px;
   }
   .movie-card {
     width: 294px;
@@ -99,7 +94,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 60px 0 50px 0;
+    padding: 60px 0 40px 0;
   }
   .main-box {
     width: calc(3 * 274px + 60px);
@@ -109,7 +104,6 @@
     flex-wrap: wrap;
     row-gap: 30px;
     column-gap: 30px;
-    padding-top: 60px;
   }
   .movie-card {
     width: 274px;

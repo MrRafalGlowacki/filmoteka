@@ -1,8 +1,24 @@
+import { getGenreList } from './getAndRenderTopRatedMovies';
 const getMovieYear = date => {
   return date.substring(0, 4);
 };
+let singleMovieGenres = '';
+const getMovieGenres = (movieGenresIds, genreList) => {
+  singleMovieGenres = '';
+  movieGenresIds.map(id => {
+    genreList.map(elem => {
+      if (elem.id === id) {
+        id != movieGenresIds[movieGenresIds.length - 1]
+          ? (singleMovieGenres = singleMovieGenres + elem.name + ', ')
+          : (singleMovieGenres = singleMovieGenres + elem.name);
+      }
+    });
+  });
+};
 
 const render = elem => {
+  const genreList = getGenreList();
+  getMovieGenres(elem.genre_ids, genreList.data.genres);
   return `
 <div class="movie-card">
   <img class="movie-card__image" alt="" src='https://image.tmdb.org/t/p/w500/${
@@ -10,15 +26,14 @@ const render = elem => {
   }'}>
   <div class="movie-card__label">
     <p class="movie-card__title">${elem.original_title}</p>
-    <p class="movie-card__genre-year">Drama, Action | ${getMovieYear(
-      elem.release_date
-    )}</p> 
+    <p class="movie-card__genre-year">${singleMovieGenres} | ${getMovieYear(
+    elem.release_date
+  )}</p> 
     <p class="movie-card__id">${elem.id}</p> 
   </div>
 </div>
 `;
 };
-
 export { render };
 /*
 

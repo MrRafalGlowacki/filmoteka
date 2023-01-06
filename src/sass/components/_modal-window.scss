@@ -18,6 +18,7 @@
   width: 280px;
   margin: auto;
   padding: 48px 20px 41px 20px;
+  overflow: auto;
 
   &__image {
     width: 240px;
@@ -77,13 +78,30 @@
     gap: 15px;
   }
   &__close {
-    background-color: #ffffff;
     position: absolute;
     top: 18px;
     right: 18px;
     margin: 0px;
-    padding: 0px;
-    border: none;
+    padding: 7px 0 6px 0;
+
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+
+  &__close:hover,
+  &__close:focus {
+    background: getColor("underline-color");
+    color: getColor("basic-color");
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+        0px 2px 1px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
   }
 }
 .rate {
@@ -109,7 +127,17 @@
   color: #ffffff;
   border-radius: 5px;
   border: 0px;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 }
+
+.watched-btn:hover, .watched-btn:focus {
+        transform: scale(1.1);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+    }
+
 .queue-btn {
   background: none;
   padding: 0px;
@@ -118,6 +146,15 @@
   text-transform: uppercase;
   border: 1px solid #000000;
   border-radius: 5px;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.queue-btn:hover, .queue-btn:focus {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {

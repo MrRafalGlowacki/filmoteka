@@ -133,10 +133,10 @@
 }
 
 .watched-btn:hover, .watched-btn:focus {
-        transform: scale(1.1);
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-        border-radius: 10px;
-    }
+  transform: scale(1.1);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
 
 .queue-btn {
   background: none;
@@ -152,9 +152,9 @@
 }
 
 .queue-btn:hover, .queue-btn:focus {
-    transform: scale(1.1);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
+  transform: scale(1.1);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {

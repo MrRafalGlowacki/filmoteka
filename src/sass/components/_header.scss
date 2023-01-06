@@ -150,8 +150,36 @@
       screen and (min-resolution: 4dppx) {
       background-image: url(../images/image-header/image-header-tablet@3x.jpg);
     }
+
     &__info-top {
       padding: 41px 51px 41px 51px;
+
+
+        @media screen and (max-width: 767px) {
+    
+            background-image: url(../images/image-header/image-header-mobile.jpg);
+            background-size: cover;
+            
+            @media screen and (min-device-pixel-ratio: 2),
+            screen and (min-resolution: 192dpi),
+            screen and (min-resolution: 2dppx) {
+                background-image: url(../images/image-header/image-header-mobile@2x.jpg);
+            } 
+            @media screen and (-webkit-max-device-pixel-ratio: 3),
+            screen and (min-resolution: 384dpi),
+            screen and (min-resolution: 4dppx) {
+                background-image: url(../images/image-header/image-header-mobile@3x.jpg);
+            }
+
+        &__logo-word {
+            display: none;
+        }
+
+        &__info-top {
+            padding: 46px 0 41px 0;
+        }
+        
+
     }
 
     &__search-form {

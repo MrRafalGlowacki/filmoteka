@@ -1,12 +1,11 @@
 .header-library {
-
     
     &__info-top {
         width: 100%;
         justify-content: space-between;
         display: flex;
         @media screen and (max-width: 767px) { 
-            padding-top: 41px;
+            padding-top: 46px;
         }
         @media screen and (min-width: 768px) and (max-width: 1024px) {
             padding: 41px 56px 0 51px;

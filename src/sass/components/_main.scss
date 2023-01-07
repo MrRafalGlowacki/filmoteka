@@ -49,15 +49,7 @@
     padding: 0;
   }
 }
-.no-movies {
-  font-weight: 900;
-  font-size: 30px;
-  height: calc(100vh - 39vh);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
+
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .main {
     padding: 60px 0 50px 0;
@@ -82,9 +74,6 @@
       width: 293px;
       height: 398px;
     }
-  }
-  .no-movies {
-    font-size: 50px;
   }
 }
 

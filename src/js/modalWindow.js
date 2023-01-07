@@ -37,10 +37,10 @@ const modalInformation = async (
   modalId.textContent = response.data.id;
 };
 
-const modalWindowOpen = event => {
+const modalWindowOpen = async event => {
   if (event.target.className === 'movie-card__image') {
     movieId = event.target.parentNode.children[1].children[2].textContent;
-    modalInformation();
+    await modalInformation();
     modalImage.src = event.target.src;
     modalOpen.style.display = 'flex';
     isModalOpen = true;
@@ -72,5 +72,3 @@ addEventListener('click', modalWindowOpen);
 modalClose.addEventListener('click', closeModalWindow);
 addEventListener('keydown', clickEscape);
 addEventListener('click', closeByClick);
-export { modalInformation };
-

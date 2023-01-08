@@ -1,3 +1,4 @@
+import { renderMovieCard } from './getAndRenderTopRatedMovies';
 const genres = document.getElementById('genres');
 let ByGenres_API_URL = 'https://api.themoviedb.org/3/discover/movie?';
 
@@ -29,12 +30,11 @@ const getGenres = event => {
           } else {
             selectedGenre.push(listOfGenres.data.genres[i].id);
           }
-          console.log(selectedGenre);
           SelectedAPI =
             ByGenres_API_URL +
             '&with_genres=' +
             encodeURI(selectedGenre.join(','));
-          console.log(SelectedAPI);
+          renderMovieCard(SelectedAPI);
         });
         genres.append(movieGenre);
       }

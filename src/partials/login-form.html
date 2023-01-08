@@ -1,23 +1,24 @@
-<form id="sign-up-form">
-  <label for="email">Email</label>
-  <input type="text" id="createEmail" name="email" required>
-  <label for="password">Password</label>
-  <input type="password" id="createPassword" name="password" required>
-  <input type="submit" value = "create">
-</form>
-<form id="sign-in-form">
-  <label for="email">Email</label>
-  <input type="text" id="email" name="email" required>
-  <label for="password">Password</label>
-  <input type="password" id="password" name="password" required>
-  <input type="submit" value = "Log">
-</form>
-<button id="sign-in-google">Googlem</button>
-<div id="signed-in-content">
-    <button id="sign-out-btn">Get lost!</button>
+<div class="logIn-modal is-hidden">
+  <button id="form-modal-close">XD</button>
+  <form id="sign-up-form">
+    <label for="email">Email</label>
+    <input type="text" class="" id="createEmail" name="email" required />
+    <label for="password">Password</label>
+    <input type="password" id="createPassword" name="password" required />
+    <input type="submit" value="create" />
+  </form>
+  <form id="sign-in-form">
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" required />
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required />
+    <input type="submit" value="Log" />
+  </form>
+  <button id="sign-in-google">Googlem</button>
 </div>
 
-
+<button id="sign-out-btn">Log out</button>
+<button id="logIn" class="is-hidden" title="LogIn">Log In</button>
 
 <!-- <div class="overlay-auth is-hidden">
   <div class="modal-auth">

@@ -16,33 +16,51 @@ const provider = new GoogleAuthProvider();
 const signWithGoogleBtn = document.querySelector('#sign-in-google');
 const signUpForm = document.querySelector('#sign-up-form');
 const signInForm = document.querySelector('#sign-in-form');
-const signInContent = document.querySelector('#signed-in-content');
+const AuthModal = document.querySelector('.logIn-modal');
 const signOutBtn = document.querySelector('#sign-out-btn');
+const logInBtn = document.querySelector('#logIn');
+const closeModalBtn = document.querySelector('#form-modal-close');
+
 
 const showSignInContent = () => {
   signInForm.style.display = 'none';
   signUpForm.style.display = 'none';
   signWithGoogleBtn.style.display = 'none';
-  signInContent.style.display = 'block';
 };
 
 const showSignInForm = () => {
   signInForm.style.display = 'block';
   signUpForm.style.display = 'block';
   signWithGoogleBtn.style.display = 'block';
-  signInContent.style.display = 'none';
 };
 
 const handleAuthChanged = user => {
   if (user) {
     showSignInContent();
+    signOutBtn.classList.remove('is-hidden');
+    logInBtn.classList.add('is-hidden');
+    AuthModal.classList.add('is-hidden');
   } else {
     showSignInForm();
+    signOutBtn.classList.add('is-hidden');
+    logInBtn.classList.remove('is-hidden');
   }
 };
 // Nasłuchiwacz zmiany stanu zalogowania
 onAuthStateChanged(auth, handleAuthChanged);
 
+const showAuthForm = () => {
+  AuthModal.classList.remove('is-hidden');
+  logInBtn.classList.add('is-hidden');
+  closeModalBtn.addEventListener('click', closeModalhandler);
+  signInForm.addEventListener('submit', handleSubmitSignInForm);
+  signUpForm.addEventListener('submit', handleSubmitSignUpForm);
+  signWithGoogleBtn.addEventListener('click', signInWithGoogle);
+};
+const closeModalhandler = () => {
+  AuthModal.classList.add('is-hidden');
+  logInBtn.classList.remove('is-hidden');
+};
 // Tworzenie nowego konta
 function handleSubmitSignUpForm(e) {
   e.preventDefault();
@@ -51,10 +69,10 @@ function handleSubmitSignUpForm(e) {
     .then(userCredential => {
       // Signed in
       const user = userCredential.user;
-      const welcome = document.createElement('h1');
-      welcome.classList.add('WTX');
-      welcome.textContent = `Hello ${user.email}, I am so happy to see You!`;
-      signInContent.prepend(welcome);
+      // const welcome = document.createElement('h1');
+      // welcome.classList.add('WTX');
+      // welcome.textContent = `Hello ${user.email}, I am so happy to see You!`;
+      // signInContent.prepend(welcome);
       console.log(user);
       Notiflix.Notify.success('New user account logged in');
       // ...
@@ -75,10 +93,10 @@ const handleSubmitSignInForm = e => {
     .then(userCredential => {
       // Signed in
       const user = userCredential.user;
-      const welcome = document.createElement('h1');
-      welcome.classList.add('WTX');
-      welcome.textContent = `Hello ${user.email}, I am so happy to see You!`;
-      signInContent.prepend(welcome);
+      // const welcome = document.createElement('h1');
+      // welcome.classList.add('WTX');
+      // welcome.textContent = `Hello ${user.email}, I am so happy to see You!`;
+      // signInContent.prepend(welcome);
       console.log(user);
       Notiflix.Notify.success('You are log in');
       // ...
@@ -99,10 +117,10 @@ const signInWithGoogle = () => {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-      const welcome = document.createElement('h1');
-      welcome.classList.add('WTX');
-      welcome.textContent = `Hello ${user.email}, I am so happy to see You!`;
-      signInContent.prepend(welcome);
+      // const welcome = document.createElement('h1');
+      // welcome.classList.add('WTX');
+      // welcome.textContent = `Hello ${user.email}, I am so happy to see You!`;
+      // signInContent.prepend(welcome);
       Notiflix.Notify.success(`Hello ${user.displayName}`);
       console.log(user);
       // ...
@@ -123,13 +141,11 @@ const signInWithGoogle = () => {
 // wylogowanie
 const handleSignOut = () => {
   signOut(auth).then(() => {
-    document.querySelector('.WTX').remove();
+    // document.querySelector('.WTX').remove();
     signUpForm.reset();
     signInForm.reset();
   });
 };
 
-signInForm.addEventListener('submit', handleSubmitSignInForm);
-signUpForm.addEventListener('submit', handleSubmitSignUpForm);
-signWithGoogleBtn.addEventListener('click', signInWithGoogle);
 signOutBtn.addEventListener('click', handleSignOut);
+logInBtn.addEventListener('click', showAuthForm);

@@ -49,3 +49,14 @@
 .pagination-number.hidden {
   display: none;
 }
+
+@media screen and (max-width: 767px) {
+  .ellipsis,
+  .hidden-mobile {
+    display: none;
+  }
+  .pagination-number {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

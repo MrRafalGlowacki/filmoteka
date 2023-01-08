@@ -47,7 +47,7 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  & .students-modal {
+  & .students-modal .auth-modal {
     transform: translate(-50%, -50%) scale(0.1);
   }
 }

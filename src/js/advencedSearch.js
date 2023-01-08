@@ -1,5 +1,6 @@
 import { renderMovieCard } from './getAndRenderTopRatedMovies';
-const genres = document.getElementById('genres');
+const genres = document.getElementById('select-genres');
+console.log(genres);
 let ByGenres_API_URL = 'https://api.themoviedb.org/3/discover/movie?';
 
 let SelectedAPI = 'https://api.themoviedb.org/3/movie/popular';
@@ -9,7 +10,6 @@ import { getGenresList } from './getGenreList';
 let selectedGenre = [];
 
 const getGenres = event => {
-  genres.innerHTML = '';
   const genreList = getGenresList();
   const getList = () => {
     genreList.then(listOfGenres => {
@@ -35,6 +35,7 @@ const getGenres = event => {
             '&with_genres=' +
             encodeURI(selectedGenre.join(','));
           renderMovieCard(SelectedAPI);
+          console.log(selectedGenre);
         });
         genres.append(movieGenre);
       }

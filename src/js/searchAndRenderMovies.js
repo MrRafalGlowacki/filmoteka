@@ -1,6 +1,8 @@
 import { getMovies } from '../getMovies';
 import { render } from './renderMovieCard';
+import * as pagination from './pagination';
 
+const header = document.querySelector('.header__no-movies');
 const main = document.querySelector('.main-box');
 const inputSearch = document.querySelector("input[name='searchQuery']");
 const searchButton = document.querySelector('.header__search-form-btn');
@@ -12,29 +14,67 @@ searchButton.addEventListener('click', renderFoundMovies);
 
 async function renderFoundMovies(event) {
   event.preventDefault();
+  header.innerHTML = '';
   currentPage = 1;
   const searchQuery = inputSearch.value;
   if (!searchQuery) {
     alert('Enter movie title');
   } else {
-    const moviesList = await getMovies(searchQuery, currentPage);
+    let moviesList = await getMovies(searchQuery, currentPage);
     if (!moviesList.results.length) {
-      main.innerHTML = `<div class="no-movies">
-      No movie found
-      </div > `;
-      main.insertAdjacentHTML('beforeend', render(elem));
+      header.innerHTML = `Search result not successful. Enter the correct movie name.`;
     } else {
       main.innerHTML = '';
       console.log(moviesList);
+
       moviesList.results.map(elem => {
         main.insertAdjacentHTML('beforeend', render(elem));
+      });
+      pagination.getPaginationNumbers(moviesList.total_pages);
+      pagination.setCurrentPage(currentPage);
+
+      pagination.prevButton.addEventListener('click', async () => {
+        pagination.setCurrentPage(currentPage - 1);
+        moviesList = await getMovies(searchQuery, --currentPage);
+        main.innerHTML = '';
+        console.log(moviesList);
+
+        moviesList.results.map(elem => {
+          main.insertAdjacentHTML('beforeend', render(elem));
+        });
+      });
+      pagination.nextButton.addEventListener('click', async () => {
+        pagination.setCurrentPage(currentPage + 1);
+        moviesList = await getMovies(searchQuery, ++currentPage);
+        main.innerHTML = '';
+        console.log(moviesList);
+
+        moviesList.results.map(elem => {
+          main.insertAdjacentHTML('beforeend', render(elem));
+        });
+      });
+      document.querySelectorAll('.pagination-number').forEach(button => {
+        const pageIndex = Number(button.getAttribute('page-index'));
+        if (pageIndex) {
+          button.addEventListener('click', async () => {
+            pagination.setCurrentPage(pageIndex);
+            currentPage = pageIndex;
+
+            moviesList = await getMovies(searchQuery, currentPage);
+            main.innerHTML = '';
+            console.log(moviesList);
+
+            moviesList.results.map(elem => {
+              main.insertAdjacentHTML('beforeend', render(elem));
+            });
+          });
+        }
       });
     }
   }
 }
 
 export { renderFoundMovies };
-
 
 toTopBtn.addEventListener('click', onTopScroll);
 

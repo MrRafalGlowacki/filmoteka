@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
 }
 .main-box {
   display: flex;
@@ -13,23 +14,38 @@
 }
 
 .movie-card {
-  width: 280px;
-  height: 443px;
+ 
+  height: 444px;
   display: flex;
   flex-direction: column;
+  transition-duration: .45s;
+  position: relative;
+  overflow: hidden;
+  transform: scale(1);
+ 
+  border: 2px solid #640064;
+  border-radius: 10px;
+
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  
 
   &__image {
     width: 280px;
-    height: 402px;
+    height: 398px;
     border: none;
     outline: none;
-    border-radius: 5px;
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      width: 294px; 
+    }
+
   }
   &__label {
     padding-top: 10px;
     align-items: center;
     font-size: 12px;
     font-weight: 500;
+    word-wrap: break-word;
   }
   &__title {
     margin: 0;
@@ -48,6 +64,15 @@
     margin: 0;
     padding: 0;
   }
+}
+
+.movie-card:hover,
+.movie-card:focus {
+  transform: scale(1.04);
+  box-shadow: 5px 4px 11px -3px rgb(15 31 3 / 56%);
+  cursor: pointer;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .no-movies {
   font-weight: 900;
@@ -76,12 +101,6 @@
   }
   .movie-card {
     width: 294px;
-    height: 440px;
-
-    &__image {
-      width: 293px;
-      height: 398px;
-    }
   }
   .no-movies {
     font-size: 50px;
@@ -107,12 +126,7 @@
   }
   .movie-card {
     width: 274px;
-    height: 440px;
-
-    &__image {
-      width: 274px;
-      height: 398px;
-    }
+    height: 442px;
   }
 }
 .loader {

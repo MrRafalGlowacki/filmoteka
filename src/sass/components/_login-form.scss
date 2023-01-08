@@ -1,0 +1,89 @@
+#logIn {
+  position: fixed;
+  top: 1%;
+  right: 1%;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: getColor(button-color);
+  opacity: 0.8;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 2px 1px 3px 0px rgba(0, 0, 0, 0.3);
+  transition: 350ms ease-in-out;
+  &:hover {
+    opacity: 1;
+  }
+}
+#sign-out-btn {
+  position: absolute;
+  top: 1%;
+  right: 1%;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: getColor(button-color);
+  opacity: 0.8;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 2px 1px 3px 0px rgba(0, 0, 0, 0.3);
+  transition: 350ms ease-in-out;
+  &:hover {
+    opacity: 1;
+  }
+}
+.logIn-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 15px;
+  // transform: translate(-50%, -50%);
+  width: 430px;
+  height: 485px;
+  background-color: getColor(basic-color);
+  transition-property: transform;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translate(-50%, -50%) scale(1);
+  &__close-btn {
+    position: absolute;
+    border: none;
+    top: 8px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+    &--svg {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      &:hover,
+      &:active,
+      &:focus {
+        fill: getColor(button-color);
+      }
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  #logIn {
+    width: 50px;
+    height: 60px;
+    border-radius: 10px;
+  }
+  #sign-out-btn {
+    // top: 5.5%;
+    // transform: rotate(90deg);
+    width: 50px;
+    height: 60px;
+    border-radius: 10px;
+  }
+}
+@media screen and (min-width: 1025px) {
+}

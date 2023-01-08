@@ -19,7 +19,8 @@
   margin: auto;
   padding: 48px 20px 41px 20px;
   overflow: auto;
-
+  
+  
   &__image {
     width: 240px;
     height: 357px;
@@ -92,6 +93,8 @@
 
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+    cursor: pointer;
   }
 
 
@@ -157,7 +160,7 @@
   border-radius: 10px;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1279px) {
+@media screen and (min-width: 768px) and (max-width: 1023px) {
   .modal {
     width: 618px;
     flex-direction: row;
@@ -176,7 +179,7 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1024px) {
   .marker {
     margin-right: 83px;
   }

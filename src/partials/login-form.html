@@ -1,21 +1,26 @@
-<div class="logIn-modal is-hidden">
-  <button id="form-modal-close">XD</button>
-  <form id="sign-up-form">
-    <label for="email">Email</label>
-    <input type="text" class="" id="createEmail" name="email" required />
-    <label for="password">Password</label>
-    <input type="password" id="createPassword" name="password" required />
-    <input type="submit" value="create" />
-  </form>
-  <form id="sign-in-form">
-    <label for="email">Email</label>
-    <input type="text" id="email" name="email" required />
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" required />
-    <input type="submit" value="Log" />
-  </form>
-  <button id="sign-in-google">Googlem</button>
+<div class="logIn-modal backdrop is-hidden">
+  <div class="auth-modal">
+    <button class="auth-modal__close-btn" id="form-modal-close">XD</button>
+    <form id="sign-in-form">
+      <h2>SignIn</h2>
+      <label for="email">Email</label>
+      <input type="text" id="email" class="Sign-email" name="email" placeholder="User email" required />
+      <label for="password">Password</label>
+      <input type="password" id="password" class="signin-password" name="password" placeholder="User password" required />
+      <input type="submit" value="Log" />
+    </form>
+
+    <form id="sign-up-form">
+      <h2>Create new user</h2>
+      <label for="email">Email</label>
+      <input type="text" class="create-email" id="createEmail" name="email" placeholder="New user email" required />
+      <label for="password">Password</label>
+      <input type="password" class="create-email" id="createPassword" name="password" placeholder="New user email" required />
+      <input type="submit" value="create" />
+    </form>
+    <button class="sign-in-google" id="sign-in-google">Tera Googlem!</button>
+  </div>
 </div>
 
-<button id="sign-out-btn">Log out</button>
-<button id="logIn" class="is-hidden" title="LogIn">Log In</button>
+<button class="sign-out-btn" id="sign-out-btn">Log out</button>
+<button id="logIn" class="logIn is-hidden" title="LogIn">Log In</button>

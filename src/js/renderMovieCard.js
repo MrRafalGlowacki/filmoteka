@@ -25,7 +25,7 @@ const render = elem => {
     elem.poster_path
   }'}>
   <div class="movie-card__label">
-    <p class="movie-card__title">${elem.original_title}</p>
+    <p class="movie-card__title">${elem.title}</p>
     <p class="movie-card__genre-year">${singleMovieGenres} | ${getMovieYear(
     elem.release_date
   )}</p> 

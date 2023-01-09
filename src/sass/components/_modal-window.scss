@@ -16,11 +16,25 @@
   line-height: 1.34;
   flex-direction: column;
   width: 280px;
+  height: auto;
+  max-height: 100%;
   margin: auto;
+  z-index: 2;
   padding: 48px 20px 41px 20px;
   overflow: auto;
-  
-  
+
+  &__backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #000000;
+    opacity: 0.25;
+    z-index: 1;
+  }
+
   &__image {
     width: 240px;
     height: 357px;
@@ -97,13 +111,12 @@
     cursor: pointer;
   }
 
-
   &__close:hover,
   &__close:focus {
-    background: getColor("underline-color");
-    color: getColor("basic-color");
+    background: getColor('underline-color');
+    color: getColor('basic-color');
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-        0px 2px 1px rgba(0, 0, 0, 0.2);
+      0px 2px 1px rgba(0, 0, 0, 0.2);
     transform: scale(1.1);
   }
 }
@@ -135,7 +148,8 @@
   cursor: pointer;
 }
 
-.watched-btn:hover, .watched-btn:focus {
+.watched-btn:hover,
+.watched-btn:focus {
   transform: scale(1.1);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
@@ -154,7 +168,8 @@
   cursor: pointer;
 }
 
-.queue-btn:hover, .queue-btn:focus {
+.queue-btn:hover,
+.queue-btn:focus {
   transform: scale(1.1);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 10px;

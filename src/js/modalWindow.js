@@ -1,5 +1,6 @@
 import axios from 'axios';
 const modalOpen = document.querySelector('.modal');
+const modalBackdrop = document.querySelector('.modal__backdrop');
 const modalClose = document.querySelector('.modal__close');
 const modalImage = document.querySelector('.modal__image');
 const modalTitle = document.querySelector('.modal__title');
@@ -43,12 +44,15 @@ const modalWindowOpen = async event => {
     await modalInformation();
     modalImage.src = event.target.src;
     modalOpen.style.display = 'flex';
+    modalBackdrop.style.display = 'flex';
+
     isModalOpen = true;
   }
 };
 
 const closeModalWindow = event => {
   modalOpen.style.display = 'none';
+  modalBackdrop.style.display = 'none';
   isModalOpen = false;
 };
 

@@ -1,19 +1,21 @@
 import axios from 'axios';
 import { Notify } from 'notiflix';
+import './getGenreList';
 
-let movieId = '';
+
+let movieID = '';
 const API_KEY = 'b942b8bf626a04f48b07153a95ee51a0';
 const loader = document.querySelector('.loader');
-const watchedBtn = document.querySelector('.watched-btn');
-const queueBtn = document.querySelector('.queue-btn');
-const main = document.querySelector('.main');
+const watchedBtn = document.querySelector('.watched-list-btn');
+const queueBtn = document.querySelector('.queue-list-btn');
+const main = document.querySelector('.main-box');
 
 
 
- const getMoviesbyId = async (movieId) => {
+ const getMoviesbyId = async (movieID) => {
      loader.style.display = 'block';
      try {
-    let API_URL = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`;
+    let API_URL = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${API_KEY}&language=en-US`;
      const response = await axios.get(API_URL);
      loader.style.display = 'none';
     
@@ -31,18 +33,15 @@ const main = document.querySelector('.main');
 let watchedMovies = [];
 
 async function getWatchedMovies() {
-    currentPage = 1;
     queueBtn.removeAttribute('disabled');
     main.innerHTML = '';
-
-   
 
     if (localStorage.getItem('added-to-watched') === null) {
         Notify.info('There are no movies in your watched list!');
         
     } else {
         watchedMovies = JSON.parse(localStorage.getItem('added-to-watched'));
-        console.log(watchedMovies);
+        
         let watchedMoviesList = [];
     
 
@@ -76,34 +75,29 @@ watchedBtn.addEventListener('click', event => {
 //queue
 
 let queuedMovies = [];
-console.log(queuedMovies.length);
+
+
 async function getQueuedMovies() {
-    watchedBtn.removeAttribute('disabled');
-    currentPage = 1;
-    main.innerHTML = '';
-      if (localStorage.getItem('added-to-queue')===null) {
-          Notify.info('There are no movies in your queue!');
-        
-      } else {
-        
-          queuedMovies = JSON.parse(localStorage.getItem('added-to-queue'));
-          let queuedMoviesList = [];
+  watchedBtn.removeAttribute('disabled');
+  main.innerHTML = '';
 
-        for (let i = 0; i < queuedMovies.length; i++) {
-            let queuedMovieId = queuedMovies[i];
-            
+  if (localStorage.getItem('added-to-queue') === null) {
+    Notify.info('There are no movies in your queue!');
+  } else {
+    queuedMovies = JSON.parse(localStorage.getItem('added-to-queue'));
+    let queuedMoviesList = [];
 
-            let queuedMoviesItem = await getMoviesbyId(queuedMovieId);
-            queuedMoviesList.push(queuedMoviesItem);
+    for (let i = 0; i < queuedMovies.length; i++) {
+      let queuedMovieId = queuedMovies[i];
 
-            
-
-            
-          }
-          renderMovies(queuedMoviesList);
+      let queuedMoviesItem = await getMoviesbyId(queuedMovieId);
+      queuedMoviesList.push(queuedMoviesItem);
     }
 
-    queueBtn.setAttribute('disabled', true);
+    renderMovies(queuedMoviesList);
+  }
+
+  queueBtn.setAttribute('disabled', true);
 }
 
 queueBtn.addEventListener('click', event => {
@@ -113,6 +107,11 @@ queueBtn.addEventListener('click', event => {
 
 //render movies
 function renderMovies(movies) {
+    const getMovieYear = date => {
+      return date.substring(0, 4);
+    };
+   
+    
   const markup = movies
     .map(movie => {
       return `
@@ -122,6 +121,7 @@ function renderMovies(movies) {
   }'}>
   <div class="movie-card__label">
     <p class="movie-card__title">${movie.original_title}</p>
+    <p class="movie-card__genre-year">   | ${getMovieYear(movie.release_date)}</p> 
     
     <p class="movie-card__id">${movie.id}</p> 
   </div>

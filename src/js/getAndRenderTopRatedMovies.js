@@ -19,7 +19,9 @@ const renderMovieCard = async (link, pageNumber) => {
     movies.data.results.map(elem => {
       main.insertAdjacentHTML('beforeend', render(elem));
     });
-    pagination.getPaginationNumbers(movies.data.total_pages);
+    movies.data.total_pages < 500
+      ? pagination.getPaginationNumbers(movies.data.total_pages)
+      : pagination.getPaginationNumbers(500);
     pagination.setCurrentPage(currentPage);
     pagination.prevButton.addEventListener('click', async () => {
       pagination.setCurrentPage(currentPage - 1);

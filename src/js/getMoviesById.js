@@ -114,7 +114,9 @@ function renderMovies(movies) {
       movie.genres
     )}  | ${getMovieYear(movie.release_date)}</span> 
     <span class="movie-card__vote">${movie.vote_average.toFixed(1)}</span>
+    
     </div>
+    <p class="movie-card__id">${movie.id}</p> 
   </div>
 </div>
 `;

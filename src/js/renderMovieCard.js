@@ -19,7 +19,8 @@ const getMovieGenres = (movieGenresIds, genreList) => {
 
 const imageExists = (link, poster_path) => {
   if (poster_path != null) return `${link}${poster_path}`;
-  else return '../images/No-Image-Placeholder.jpg';
+  else
+    return 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png';
 };
 
 const render = elem => {

@@ -1,4 +1,4 @@
-import Notiflix, { Notify } from 'notiflix';
+import Notiflix from 'notiflix';
 import { firebaseConfig } from './firebaseConfig';
 import { initializeApp } from 'firebase/app';
 import {
@@ -10,70 +10,66 @@ import {
   signInWithPopup,
   signOut,
 } from 'firebase/auth';
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 const signWithGoogleBtn = document.querySelector('#sign-in-google');
-const signUpForm = document.querySelector('#sign-up-form');
-const signInForm = document.querySelector('#sign-in-form');
+const form = document.querySelector('#sign-in-form');
 const AuthModal = document.querySelector('.logIn-modal');
 const signOutBtn = document.querySelector('#sign-out-btn');
 const logInBtn = document.querySelector('#logIn');
 const closeModalBtn = document.querySelector('#form-modal-close');
-
-
+const formSwitchBtn = document.querySelector('.js-form-auth__type-switch');
+const formSubmitBtn = document.querySelector('.js-form__submit');
+const formTitle = document.querySelector('.js-form-auth__title');
+let formType = 'authorization';
+// zachowanie po zalogowaniu
 const showSignInContent = () => {
-  signInForm.style.display = 'none';
-  signUpForm.style.display = 'none';
+  form.style.display = 'none';
   signWithGoogleBtn.style.display = 'none';
+  signOutBtn.classList.remove('is-hidden');
+  logInBtn.classList.add('is-hidden');
+  AuthModal.classList.add('is-hidden');
 };
-
+// potrzebne do zalogowania
 const showSignInForm = () => {
-  signInForm.style.display = 'block';
-  signUpForm.style.display = 'block';
+  form.style.display = 'block';
   signWithGoogleBtn.style.display = 'block';
+  signOutBtn.classList.add('is-hidden');
+  logInBtn.classList.remove('is-hidden');
 };
 
 const handleAuthChanged = user => {
   if (user) {
     showSignInContent();
-    signOutBtn.classList.remove('is-hidden');
-    logInBtn.classList.add('is-hidden');
-    AuthModal.classList.add('is-hidden');
   } else {
     showSignInForm();
-    signOutBtn.classList.add('is-hidden');
-    logInBtn.classList.remove('is-hidden');
   }
 };
 // Nasłuchiwacz zmiany stanu zalogowania
 onAuthStateChanged(auth, handleAuthChanged);
-
+// pokaż modal
 const showAuthForm = () => {
   AuthModal.classList.remove('is-hidden');
   logInBtn.classList.add('is-hidden');
   closeModalBtn.addEventListener('click', closeModalhandler);
-  signInForm.addEventListener('submit', handleSubmitSignInForm);
-  signUpForm.addEventListener('submit', handleSubmitSignUpForm);
+  formSwitchBtn.addEventListener('click', formUpdate);
+  form.addEventListener('submit', handleFormSubmit);
   signWithGoogleBtn.addEventListener('click', signInWithGoogle);
 };
+// zamknij modal
 const closeModalhandler = () => {
   AuthModal.classList.add('is-hidden');
   logInBtn.classList.remove('is-hidden');
 };
 // Tworzenie nowego konta
-function handleSubmitSignUpForm(e) {
-  e.preventDefault();
-  const { email, password } = e.target.elements;
+const registrationNewUser = (email, password) => {
   createUserWithEmailAndPassword(auth, email.value, password.value)
     .then(userCredential => {
       // Signed in
       const user = userCredential.user;
-      // const welcome = document.createElement('h1');
-      // welcome.classList.add('WTX');
-      // welcome.textContent = `Hello ${user.email}, I am so happy to see You!`;
-      // signInContent.prepend(welcome);
-      console.log(user);
+      console.log('New user: ' + user.email);
       Notiflix.Notify.success('New user account logged in');
       // ...
     })
@@ -84,20 +80,14 @@ function handleSubmitSignUpForm(e) {
       Notiflix.Notify.failure(errorMessage);
       // ..
     });
-}
+};
 // Logowonie za pomocą Emaila
-const handleSubmitSignInForm = e => {
-  e.preventDefault();
-  const { email, password } = e.target.elements;
+const userLogIn = (email, password) => {
   signInWithEmailAndPassword(auth, email.value, password.value)
     .then(userCredential => {
       // Signed in
       const user = userCredential.user;
-      // const welcome = document.createElement('h1');
-      // welcome.classList.add('WTX');
-      // welcome.textContent = `Hello ${user.email}, I am so happy to see You!`;
-      // signInContent.prepend(welcome);
-      console.log(user);
+      console.log('user: ' + user.email);
       Notiflix.Notify.success('You are log in');
       // ...
     })
@@ -117,12 +107,8 @@ const signInWithGoogle = () => {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-      // const welcome = document.createElement('h1');
-      // welcome.classList.add('WTX');
-      // welcome.textContent = `Hello ${user.email}, I am so happy to see You!`;
-      // signInContent.prepend(welcome);
       Notiflix.Notify.success(`Hello ${user.displayName}`);
-      console.log(user);
+      console.log('user: ' + user.email);
       // ...
     })
     .catch(error => {
@@ -141,10 +127,42 @@ const signInWithGoogle = () => {
 // wylogowanie
 const handleSignOut = () => {
   signOut(auth).then(() => {
-    // document.querySelector('.WTX').remove();
-    signUpForm.reset();
-    signInForm.reset();
+    form.reset();
   });
+};
+// zmiana formularza
+const formUpdate = () => {
+  const conditionsInfo = document.querySelector('.js-conditions');
+  // obsługa widoczności warunków i polityki prywatności
+  if (formType === 'authorization') {
+    formType = 'registration';
+    conditionsInfo.removeAttribute('hidden');
+  } else {
+    formType = 'authorization';
+    conditionsInfo.setAttribute('hidden', '');
+  }
+
+  const formSwitchBtnText =
+    formType === 'authorization' ? 'Registration' : 'Sign In';
+  const textSubmit = formType === 'authorization' ? 'Sign In' : 'Register now';
+  const formTitleText =
+    formType === 'authorization' ? 'Sign In' : 'Registration';
+  // zmiana tytułu fromularza i tekstu guzików
+  formSwitchBtn.textContent = formSwitchBtnText;
+  formSubmitBtn.textContent = textSubmit;
+  formTitle.textContent = formTitleText;
+  form.reset();
+};
+// obsługa formularza logowania
+const handleFormSubmit = e => {
+  e.preventDefault();
+  const { email, password } = e.target.elements;
+  if (formType === 'registration') {
+    registrationNewUser(email, password);
+    formUpdate();
+  } else if (formType === 'authorization') {
+    userLogIn(email, password);
+  }
 };
 
 signOutBtn.addEventListener('click', handleSignOut);

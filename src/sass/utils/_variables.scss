@@ -3,7 +3,7 @@ $colors: (
   'basic-lighter': #f7f7f7,
   'button-color': #ff6b01,
   'bgd': #545454,
-  'bgd-dark': #0000008f,
+  'bgd-dark': #000000,
   'underline-color': #FF6B08,
 );
 
@@ -13,34 +13,3 @@ $colors: (
 
 // aby użyć koloru w projecie wpisujemy w sekcji np background-color: getColor("main-color");
 
-
-.to-top {
-  position: fixed;
-  bottom: 5%;
-  right: 5%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 70px;
-  height: 70px;
-
-  text-decoration: none;
-  color: #fff;
-  background-color: getColor("button-color");
-  border-radius: 50%;
-  opacity: 0.6;
-  box-shadow: 2px 1px 3px 0px rgba(0, 0, 0, 0.3);
-
-  cursor: pointer;
-  animation: drag 2000ms ease-in-out infinite;
-
-  transition: all 350ms ease-in-out;
-
-  &:hover,
-  &:focus {
-    opacity: 1;
-    animation-play-state: paused;
-  }
-}

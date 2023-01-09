@@ -10,7 +10,7 @@ let currentPage;
 const appendPageNumber = index => {
   if (index == pageCount) {
     let div = document.createElement('span');
-    div.className = 'ellipsis';
+    div.className = 'pagination__numbers-ellipsis';
     div.innerHTML = '&hellip;';
     div.classList.add('hidden-right');
     paginationNumbers.appendChild(div);
@@ -30,7 +30,7 @@ const appendPageNumber = index => {
 
   if (index == 1) {
     let div = document.createElement('span');
-    div.className = 'ellipsis';
+    div.className = 'pagination__numbers-ellipsis';
     div.innerHTML = '&hellip;';
     div.classList.add('hidden-left');
     paginationNumbers.appendChild(div);
@@ -80,7 +80,7 @@ const handlePageButtonsStatus = () => {
 };
 
 const displayLessPages = pageNum => {
-  const dots = document.querySelectorAll('.ellipsis');
+  const dots = document.querySelectorAll('.pagination__numbers-ellipsis');
   console.log(dots);
   document.querySelectorAll('.pagination__number').forEach(button => {
     const pageIndex = Number(button.getAttribute('page-index'));

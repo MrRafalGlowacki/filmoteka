@@ -43,19 +43,19 @@
     background: #ff6b08;
     border-radius: 5px;
   }
-}
 
-.ellipsis {
-  margin: 0.25rem 0.25rem;
-  align-items: center;
-}
+  &__numbers-ellipsis {
+    margin: 0.25rem 0.25rem;
+    align-items: center;
+  }
 
-.ellipsis.hidden-left {
-  display: none;
-}
+  &__numbers-ellipsis.hidden-left {
+    display: none;
+  }
 
-.ellipsis.hidden-right {
-  display: none;
+  &__numbers-ellipsis.hidden-right {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -64,8 +64,12 @@
       margin-left: 0;
       margin-right: 0;
     }
+
+    &__numbers-ellipsis {
+      display: none;
+    }
   }
-  .ellipsis,
+
   .hidden-mobile {
     display: none;
   }

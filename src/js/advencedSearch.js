@@ -19,12 +19,14 @@ const getGenres = event => {
         movieGenre.id = listOfGenres.data.genres[i].id;
         movieGenre.innerText = listOfGenres.data.genres[i].name;
         movieGenre.addEventListener('click', () => {
+          movieGenre.classList.add('focused-genre');
           if (selectedGenre === 0) {
             selectedGenre.push(listOfGenres.data.genres[i].id);
           } else if (selectedGenre.includes(listOfGenres.data.genres[i].id)) {
             selectedGenre.forEach((id, idClear) => {
               if (id == listOfGenres.data.genres[i].id) {
                 selectedGenre.splice(idClear, 1);
+                movieGenre.classList.remove('focused-genre');
               }
             });
           } else {

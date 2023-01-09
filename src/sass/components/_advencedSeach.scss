@@ -1,22 +1,41 @@
+.genres-menu {
+  position: relative;
+  display: inline-block;
+  &__btn {
+    background: #ff6b01;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  &:hover .select-genres {
+    display: block;
+  }
+  &:hover .genres-menu__btn {
+    background: #b64e03;
+  }
+}
 .select-genres {
-  display: flex;
-  gap: 5px;
-  flex-wrap: wrap;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  &:hover {
+    display: block;
+  }
 }
 .genre {
-  padding: 0px;
-  padding: 5px 10px;
-  text-transform: uppercase;
-  background: #ff6b01;
-  color: #ffffff;
-  border-radius: 5px;
-  border: 0px;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  &:hover {
+    background-color: #f1f1f1;
+  }
 }
-.genre:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
+.focused-genre {
+  background: #ff6b01;
 }

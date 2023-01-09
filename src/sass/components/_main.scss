@@ -14,8 +14,9 @@
 }
 
 .movie-card {
-  width: 280px;
-  height: 444px;
+  width: 280px; 
+  height: auto;
+ 
   display: flex;
   flex-direction: column;
   transition-duration: .45s;
@@ -23,7 +24,7 @@
   overflow: hidden;
   transform: scale(1);
  
-  border: 2px solid #640064;
+ /*  border: 2px solid #640064; */
   border-radius: 10px;
 
   transition-duration: 250ms;
@@ -126,7 +127,6 @@
   }
   .movie-card {
     width: 274px;
-    height: 442px;
   }
 }
 .loader {

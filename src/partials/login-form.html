@@ -1,10 +1,11 @@
 <div class="logIn-modal backdrop is-hidden">
   <div class="auth-modal">
-    <div class="auth-modal_container">
+    <div class="auth-modal__container">
       <button class="auth-modal__close-btn" id="form-modal-close" type="button">
-        <svg class="icon" width="30" height="30">
+        XD
+        <!-- <svg class="auth-modal__close-btn--icon" width="30" height="30">
           <use href="./images/icons.svg#cross"></use>
-        </svg>
+        </svg> -->
       </button>
       <div class="auth-modal__header">
         <p class="auth-modal__title js-form-auth__title">Sign In</p>
@@ -15,7 +16,7 @@
           Registration
         </button>
       </div>
-      <form class="auth=form" id="sign-in-form">
+      <form class="auth-form" id="sign-in-form">
         <label
           ><input
             class="auth-form__input auth-form__input--email js-input__email"
@@ -32,17 +33,21 @@
             type="password"
             name="password"
             minlength="6"
-            placeholder="password"
+            placeholder="Password"
             required
         /></label>
         <p class="auth-form__text js-conditions" hidden>
           By clicking Registration button, you are indicating that you have read
           and agree to the
-          <a class="auth-form__link" href="https://policies.google.com/terms?hl=en&fg=1"
+          <a
+            class="auth-form__link"
+            href="https://policies.google.com/terms?hl=en&fg=1"
             >Terms of Use</a
           >
           and
-          <a class="auth-form__link" href="https://policies.google.com/privacy?hl=en&fg=1"
+          <a
+            class="auth-form__link"
+            href="https://policies.google.com/privacy?hl=en&fg=1"
             >Privacy Policy</a
           >.
         </p>
@@ -55,7 +60,8 @@
       </form>
       <div class="auth-form__autorization">
         <p class="auth-form__sign-text">Sign in with Google:</p>
-        <button id="sign-in-google"
+        <button
+          id="sign-in-google"
           class="auth-form__button-google js-sign-google"
           aria-label="sign in with google"
         >
@@ -64,29 +70,6 @@
           </svg>
         </button>
       </div>
-      <!-- <form id="sign-up-form">
-        <h2>Create new user</h2>
-        <label for="email">Email</label>
-        <input
-          type="text"
-          class="create-email"
-          id="createEmail"
-          name="email"
-          placeholder="New user email"
-          required
-        />
-        <label for="password">Password</label>
-        <input
-          type="password"
-          class="create-email"
-          id="createPassword"
-          name="password"
-          placeholder="New user email"
-          required
-        />
-        <input type="submit" value="create" />
-      </form>
-      <button class="sign-in-google" id="sign-in-google">Tera Googlem!</button> -->
     </div>
   </div>
 </div>

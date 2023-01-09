@@ -10,6 +10,7 @@ import {
   signInWithPopup,
   signOut,
 } from 'firebase/auth';
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
@@ -23,7 +24,7 @@ const formSwitchBtn = document.querySelector('.js-form-auth__type-switch');
 const formSubmitBtn = document.querySelector('.js-form__submit');
 const formTitle = document.querySelector('.js-form-auth__title');
 let formType = 'authorization';
-
+// zachowanie po zalogowaniu
 const showSignInContent = () => {
   form.style.display = 'none';
   signWithGoogleBtn.style.display = 'none';
@@ -31,7 +32,7 @@ const showSignInContent = () => {
   logInBtn.classList.add('is-hidden');
   AuthModal.classList.add('is-hidden');
 };
-
+// potrzebne do zalogowania
 const showSignInForm = () => {
   form.style.display = 'block';
   signWithGoogleBtn.style.display = 'block';
@@ -129,10 +130,10 @@ const handleSignOut = () => {
     form.reset();
   });
 };
-// obsługa widoczności warunków
+// zmiana formularza
 const formUpdate = () => {
   const conditionsInfo = document.querySelector('.js-conditions');
-
+  // obsługa widoczności warunków i polityki prywatności
   if (formType === 'authorization') {
     formType = 'registration';
     conditionsInfo.removeAttribute('hidden');
@@ -146,7 +147,7 @@ const formUpdate = () => {
   const textSubmit = formType === 'authorization' ? 'Sign In' : 'Register now';
   const formTitleText =
     formType === 'authorization' ? 'Sign In' : 'Registration';
-
+  // zmiana tytułu fromularza i tekstu guzików
   formSwitchBtn.textContent = formSwitchBtnText;
   formSubmitBtn.textContent = textSubmit;
   formTitle.textContent = formTitleText;
@@ -163,7 +164,6 @@ const handleFormSubmit = e => {
     userLogIn(email, password);
   }
 };
-
 
 signOutBtn.addEventListener('click', handleSignOut);
 logInBtn.addEventListener('click', showAuthForm);

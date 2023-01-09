@@ -3,6 +3,7 @@ import { getGenresList } from './getGenreList';
 import { getMovies } from './getMovies';
 import { render } from './renderMovieCard';
 import * as pagination from './pagination';
+import { onTopScroll } from './searchAndRenderMovies';
 
 let genreList;
 let currentPage = 1;
@@ -27,6 +28,7 @@ const renderMovieCard = async (link, pageNumber) => {
       movies.data.results.map(elem => {
         main.insertAdjacentHTML('beforeend', render(elem));
       });
+      onTopScroll();
     });
     pagination.nextButton.addEventListener('click', async () => {
       pagination.setCurrentPage(currentPage + 1);
@@ -35,6 +37,7 @@ const renderMovieCard = async (link, pageNumber) => {
       movies.data.results.map(elem => {
         main.insertAdjacentHTML('beforeend', render(elem));
       });
+      onTopScroll();
     });
     document.querySelectorAll('.pagination-number').forEach(button => {
       const pageIndex = Number(button.getAttribute('page-index'));
@@ -48,6 +51,7 @@ const renderMovieCard = async (link, pageNumber) => {
           movies.data.results.map(elem => {
             main.insertAdjacentHTML('beforeend', render(elem));
           });
+          onTopScroll();
         });
       }
     });

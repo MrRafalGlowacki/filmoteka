@@ -42,7 +42,7 @@ async function renderFoundMovies(event) {
         moviesList.results.map(elem => {
           main.insertAdjacentHTML('beforeend', render(elem));
         });
-        onTopScroll()
+        onTopScroll();
       });
       pagination.nextButton.addEventListener('click', async () => {
         pagination.setCurrentPage(currentPage + 1);
@@ -53,7 +53,7 @@ async function renderFoundMovies(event) {
         moviesList.results.map(elem => {
           main.insertAdjacentHTML('beforeend', render(elem));
         });
-        onTopScroll()
+        onTopScroll();
       });
       document.querySelectorAll('.pagination-number').forEach(button => {
         const pageIndex = Number(button.getAttribute('page-index'));
@@ -69,7 +69,7 @@ async function renderFoundMovies(event) {
             moviesList.results.map(elem => {
               main.insertAdjacentHTML('beforeend', render(elem));
             });
-            onTopScroll()
+            onTopScroll();
           });
         }
       });
@@ -98,3 +98,4 @@ function onTopScroll() {
     behavior: 'smooth',
   });
 }
+export { onTopScroll };

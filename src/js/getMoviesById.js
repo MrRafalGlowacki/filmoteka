@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Notify } from 'notiflix';
+import { imageExists, getMovieYear } from './exportFunctions';
 
 let movieID = '';
 const API_KEY = 'b942b8bf626a04f48b07153a95ee51a0';
@@ -88,9 +89,6 @@ queueBtn.addEventListener('click', event => {
 
 //render movies
 function renderMovies(movies) {
-  const getMovieYear = date => {
-    return date.substring(0, 4);
-  };
   const getSingleMoviesGenre = genres => {
     let singleMovieGenres = '';
     genres.map(elem => {
@@ -104,9 +102,10 @@ function renderMovies(movies) {
     .map(movie => {
       return `
 <div class="movie-card">
-  <img class="movie-card__image" alt="${
-    movie.title
-  } movie" src='https://image.tmdb.org/t/p/w500/${movie.poster_path}'}>
+  <img class="movie-card__image" alt="${movie.title} movie"src=${imageExists(
+        'https://image.tmdb.org/t/p/w500',
+        movie.poster_path
+      )}>
   <div class="movie-card__label">
     <p class="movie-card__title">${movie.original_title}</p>
     <div>

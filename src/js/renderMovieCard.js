@@ -1,8 +1,6 @@
 import { getGenreList } from './getAndRenderTopRatedMovies';
-const getMovieYear = date => {
-  return date.substring(0, 4);
-};
-let singleMovieGenres = '';
+import { imageExists, getMovieYear } from './exportFunctions';
+
 const getMovieGenres = (movieGenresIds, genreList) => {
   singleMovieGenres = '';
   movieGenresIds.map(id => {
@@ -15,12 +13,6 @@ const getMovieGenres = (movieGenresIds, genreList) => {
       return singleMovieGenres;
     });
   });
-};
-
-const imageExists = (link, poster_path) => {
-  if (poster_path != null) return `${link}${poster_path}`;
-  else
-    return 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png';
 };
 
 const render = elem => {
@@ -37,12 +29,12 @@ const render = elem => {
     <p class="movie-card__genre-year">${singleMovieGenres} | ${getMovieYear(
     elem.release_date
   )}</p> 
-    <p class="movie-card__id">${elem.id}</p> 
+    <p class="movie-card__id>${elem.id}</p> 
   </div>
 </div>
 `;
 };
-export { render, getMovieGenres };
+export { render, getMovieGenres, imageExists };
 /*
 
 Powyższa funkcja przyjmuje pojedynczy obiekt z odpowiedzi z API .data.results jest to tablica obiektów jak ta poniżej a my chcemy pojedyncze obiekty więc map działa tutaj super

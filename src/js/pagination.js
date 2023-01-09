@@ -1,4 +1,4 @@
-const paginationNumbers = document.getElementById('pagination-numbers');
+const paginationNumbers = document.getElementById('pagination__numbers');
 
 export const nextButton = document.getElementById('next-button');
 export const prevButton = document.getElementById('prev-button');
@@ -17,7 +17,7 @@ const appendPageNumber = index => {
   }
 
   const pageNumber = document.createElement('button');
-  pageNumber.className = 'pagination-number';
+  pageNumber.className = 'pagination__number';
   pageNumber.innerHTML = index;
   pageNumber.setAttribute('page-index', index);
   pageNumber.setAttribute('aria-label', 'Page ' + index);
@@ -46,7 +46,7 @@ export const getPaginationNumbers = pages => {
 };
 
 const handleActivePageNumber = () => {
-  document.querySelectorAll('.pagination-number').forEach(button => {
+  document.querySelectorAll('.pagination__number').forEach(button => {
     button.classList.remove('active');
 
     const pageIndex = Number(button.getAttribute('page-index'));
@@ -82,7 +82,7 @@ const handlePageButtonsStatus = () => {
 const displayLessPages = pageNum => {
   const dots = document.querySelectorAll('.ellipsis');
   console.log(dots);
-  document.querySelectorAll('.pagination-number').forEach(button => {
+  document.querySelectorAll('.pagination__number').forEach(button => {
     const pageIndex = Number(button.getAttribute('page-index'));
 
     if (pageCount <= 7) {

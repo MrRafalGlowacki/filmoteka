@@ -18,36 +18,36 @@
   &__button:not(.disabled):hover {
     cursor: pointer;
   }
-}
 
-.pagination-number {
-  font-size: 1.1rem;
-  background-color: transparent;
-  border: none;
-  margin: 0.25rem 0.25rem;
-  cursor: pointer;
-  height: 2.5rem;
-  width: 2.5rem;
-  border-radius: 5px;
-}
+  &__number {
+    font-size: 1.1rem;
+    background-color: transparent;
+    border: none;
+    margin: 0.25rem 0.25rem;
+    cursor: pointer;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 5px;
+  }
 
-.pagination-number:hover,
-.pagination-button:not(.disabled):hover {
-  background: #f7f7f7;
-}
+  &__number:hover,
+  &__button:not(.disabled):hover {
+    background: #f7f7f7;
+  }
 
-.pagination-number.active {
-  background: #ff6b08;
-  border-radius: 5px;
+  &__number.hidden {
+    display: none;
+  }
+
+  &__number.active {
+    background: #ff6b08;
+    border-radius: 5px;
+  }
 }
 
 .ellipsis {
   margin: 0.25rem 0.25rem;
   align-items: center;
-}
-
-.pagination-number.hidden {
-  display: none;
 }
 
 .ellipsis.hidden-left {
@@ -59,12 +59,14 @@
 }
 
 @media screen and (max-width: 767px) {
+  .pagination {
+    &__number {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
   .ellipsis,
   .hidden-mobile {
     display: none;
-  }
-  .pagination-number {
-    margin-left: 0;
-    margin-right: 0;
   }
 }

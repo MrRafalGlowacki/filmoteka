@@ -25,7 +25,6 @@ const imageExists = (link, poster_path) => {
 
 const render = elem => {
   const genreList = getGenreList();
-  console.log(elem);
   getMovieGenres(elem.genre_ids, genreList.data.genres);
   return `
 <div class="movie-card">

@@ -1,6 +1,5 @@
 import { renderMovieCard } from './getAndRenderTopRatedMovies';
 const genres = document.getElementById('select-genres');
-console.log(genres);
 let ByGenres_API_URL = 'https://api.themoviedb.org/3/discover/movie?';
 
 let SelectedAPI = 'https://api.themoviedb.org/3/movie/popular';

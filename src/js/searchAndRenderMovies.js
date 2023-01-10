@@ -25,7 +25,6 @@ async function renderFoundMovies(event) {
       header.innerHTML = `Search result not successful. Enter the correct movie name.`;
     } else {
       main.innerHTML = '';
-      console.log(moviesList);
 
       moviesList.results.map(elem => {
         main.insertAdjacentHTML('beforeend', render(elem));
@@ -39,7 +38,6 @@ async function renderFoundMovies(event) {
         pagination.setCurrentPage(currentPage - 1);
         moviesList = await getMovies(searchQuery, --currentPage);
         main.innerHTML = '';
-        console.log(moviesList);
 
         moviesList.results.map(elem => {
           main.insertAdjacentHTML('beforeend', render(elem));
@@ -50,7 +48,6 @@ async function renderFoundMovies(event) {
         pagination.setCurrentPage(currentPage + 1);
         moviesList = await getMovies(searchQuery, ++currentPage);
         main.innerHTML = '';
-        console.log(moviesList);
 
         moviesList.results.map(elem => {
           main.insertAdjacentHTML('beforeend', render(elem));

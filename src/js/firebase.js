@@ -24,8 +24,20 @@ const formSwitchBtn = document.querySelector('.js-form-auth__type-switch');
 const formSubmitBtn = document.querySelector('.js-form__submit');
 const formTitle = document.querySelector('.js-form-auth__title');
 let formType = 'authorization';
+let userCheck;
+
+// otwieranie okna autoryzacji na library.html, jeśli niema zalogowania.
+const OpenAuthModalOnLibrary = () => {
+  if (userCheck === 'no' && window.location.href.endsWith('library.html')) {
+    setTimeout(() => {
+      showAuthForm();
+    }, 1200);
+  } else return;
+};
+
 // zachowanie po zalogowaniu
 const showSignInContent = () => {
+  userCheck = 'yes';
   form.style.display = 'none';
   signWithGoogleBtn.style.display = 'none';
   signOutBtn.classList.remove('is-hidden');
@@ -34,12 +46,14 @@ const showSignInContent = () => {
 };
 // potrzebne do zalogowania
 const showSignInForm = () => {
+  userCheck = 'no';
   form.style.display = 'block';
   signWithGoogleBtn.style.display = 'block';
   signOutBtn.classList.add('is-hidden');
   logInBtn.classList.remove('is-hidden');
+ 
 };
-
+// zmiana stanu zalogowania
 const handleAuthChanged = user => {
   if (user) {
     showSignInContent();
@@ -49,6 +63,7 @@ const handleAuthChanged = user => {
 };
 // Nasłuchiwacz zmiany stanu zalogowania
 onAuthStateChanged(auth, handleAuthChanged);
+
 // pokaż modal
 const showAuthForm = () => {
   AuthModal.classList.remove('is-hidden');
@@ -167,3 +182,4 @@ const handleFormSubmit = e => {
 
 signOutBtn.addEventListener('click', handleSignOut);
 logInBtn.addEventListener('click', showAuthForm);
+window.onload = OpenAuthModalOnLibrary;

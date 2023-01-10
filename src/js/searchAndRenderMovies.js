@@ -54,7 +54,7 @@ async function renderFoundMovies(event) {
         });
         onTopScroll();
       });
-      document.querySelectorAll('.pagination-number').forEach(button => {
+      document.querySelectorAll('.pagination__number').forEach(button => {
         const pageIndex = Number(button.getAttribute('page-index'));
         if (pageIndex) {
           button.addEventListener('click', async () => {

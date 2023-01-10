@@ -1,6 +1,4 @@
-const navigationPane = document.querySelector('.pagination');
-
-const paginationNumbers = document.getElementById('pagination-numbers');
+const paginationNumbers = document.getElementById('pagination__numbers');
 
 export const nextButton = document.getElementById('next-button');
 export const prevButton = document.getElementById('prev-button');
@@ -10,8 +8,16 @@ let pageCount;
 let currentPage;
 
 const appendPageNumber = index => {
+  if (index == pageCount) {
+    let div = document.createElement('span');
+    div.className = 'pagination__numbers-ellipsis';
+    div.innerHTML = '&hellip;';
+    div.classList.add('hidden-right');
+    paginationNumbers.appendChild(div);
+  }
+
   const pageNumber = document.createElement('button');
-  pageNumber.className = 'pagination-number';
+  pageNumber.className = 'pagination__number';
   pageNumber.innerHTML = index;
   pageNumber.setAttribute('page-index', index);
   pageNumber.setAttribute('aria-label', 'Page ' + index);
@@ -21,6 +27,14 @@ const appendPageNumber = index => {
   }
 
   paginationNumbers.appendChild(pageNumber);
+
+  if (index == 1) {
+    let div = document.createElement('span');
+    div.className = 'pagination__numbers-ellipsis';
+    div.innerHTML = '&hellip;';
+    div.classList.add('hidden-left');
+    paginationNumbers.appendChild(div);
+  }
 };
 
 export const getPaginationNumbers = pages => {
@@ -32,7 +46,7 @@ export const getPaginationNumbers = pages => {
 };
 
 const handleActivePageNumber = () => {
-  document.querySelectorAll('.pagination-number').forEach(button => {
+  document.querySelectorAll('.pagination__number').forEach(button => {
     button.classList.remove('active');
 
     const pageIndex = Number(button.getAttribute('page-index'));
@@ -66,8 +80,27 @@ const handlePageButtonsStatus = () => {
 };
 
 const displayLessPages = pageNum => {
-  document.querySelectorAll('.pagination-number').forEach(button => {
+  const dots = document.querySelectorAll('.pagination__numbers-ellipsis');
+  console.log(dots);
+  document.querySelectorAll('.pagination__number').forEach(button => {
     const pageIndex = Number(button.getAttribute('page-index'));
+
+    if (pageCount <= 7) {
+      button.classList.remove('hidden');
+      dots[0].classList.add('hidden-left');
+      dots[1].classList.add('hidden-right');
+    } else {
+      if (pageNum <= 4) {
+        dots[0].classList.add('hidden-left');
+        dots[1].classList.remove('hidden-right');
+      } else if (pageNum >= pageCount - 3) {
+        dots[0].classList.remove('hidden-left');
+        dots[1].classList.add('hidden-right');
+      } else {
+        dots[0].classList.remove('hidden-left');
+        dots[1].classList.remove('hidden-right');
+      }
+    }
 
     if (pageNum <= 3) {
       if (pageIndex == 1) {
@@ -96,6 +129,8 @@ const displayLessPages = pageNum => {
     } else {
       if (pageCount <= 7) {
         button.classList.remove('hidden');
+        dots[0].classList.add('hidden-left');
+        dots[1].classList.add('hidden-right');
         if (pageIndex == 1 || pageIndex == pageCount) {
           button.classList.remove('hidden-mobile');
         }

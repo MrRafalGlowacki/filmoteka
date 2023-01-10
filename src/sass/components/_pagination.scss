@@ -1,62 +1,76 @@
-.pagination-container {
-  display: flex;
-  padding: 0 0 40px 0;
-  justify-content: center;
-}
+.pagination {
+  &__container {
+    display: flex;
+    padding: 0 0 40px 0;
+    justify-content: center;
+  }
 
-.pagination-number {
-  font-size: 1.1rem;
-  background-color: transparent;
-  border: none;
-  margin: 0.25rem 0.25rem;
-  cursor: pointer;
-  height: 2.5rem;
-  width: 2.5rem;
-  border-radius: 5px;
-}
+  &__button {
+    font-size: 1.1rem;
+    background-color: transparent;
+    border: none;
+    margin: 0.25rem 0.25rem;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 5px;
+  }
 
-.pagination-button {
-  font-size: 1.1rem;
-  background-color: transparent;
-  border: none;
-  margin: 0.25rem 0.25rem;
-  height: 2.5rem;
-  width: 2.5rem;
-  border-radius: 5px;
-}
+  &__button:not(.disabled):hover {
+    cursor: pointer;
+  }
 
-.pagination-number:hover,
-.pagination-button:not(.disabled):hover {
-  background: #f7f7f7;
-}
+  &__number {
+    font-size: 1.1rem;
+    background-color: transparent;
+    border: none;
+    margin: 0.25rem 0.25rem;
+    cursor: pointer;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 5px;
+  }
 
-.pagination-button:not(.disabled):hover {
-  cursor: pointer;
-}
+  &__number:hover,
+  &__button:not(.disabled):hover {
+    background: #f7f7f7;
+  }
 
-.pagination-number.active {
-  background: #ff6b08;
-  border-radius: 5px;
-}
+  &__number.hidden {
+    display: none;
+  }
 
-.ellipsis {
-  margin-left: 16px;
-  margin-right: 16px;
-  display: flex;
-  align-items: center;
-}
+  &__number.active {
+    background: #ff6b08;
+    border-radius: 5px;
+  }
 
-.pagination-number.hidden {
-  display: none;
+  &__numbers-ellipsis {
+    margin: 0.25rem 0.25rem;
+    align-items: center;
+  }
+
+  &__numbers-ellipsis.hidden-left {
+    display: none;
+  }
+
+  &__numbers-ellipsis.hidden-right {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 767px) {
-  .ellipsis,
+  .pagination {
+    &__number {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    &__numbers-ellipsis {
+      display: none;
+    }
+  }
+
   .hidden-mobile {
     display: none;
-  }
-  .pagination-number {
-    margin-left: 0;
-    margin-right: 0;
   }
 }

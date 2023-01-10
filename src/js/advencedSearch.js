@@ -1,6 +1,6 @@
 import { renderMovieCard } from './getAndRenderTopRatedMovies';
-const genres = document.getElementById('select-genres');
-console.log(genres);
+const genres = document.querySelector('.genres-menu__select');
+const genresClear = document.querySelector('.genres-menu__clear');
 let ByGenres_API_URL = 'https://api.themoviedb.org/3/discover/movie?';
 
 let SelectedAPI = 'https://api.themoviedb.org/3/movie/popular';
@@ -25,6 +25,7 @@ const getGenres = event => {
           } else if (selectedGenre.includes(listOfGenres.data.genres[i].id)) {
             selectedGenre.forEach((id, idClear) => {
               if (id == listOfGenres.data.genres[i].id) {
+                console.log(listOfGenres.data.genres[i].id);
                 selectedGenre.splice(idClear, 1);
                 movieGenre.classList.remove('focused-genre');
               }
@@ -32,12 +33,15 @@ const getGenres = event => {
           } else {
             selectedGenre.push(listOfGenres.data.genres[i].id);
           }
-          SelectedAPI =
-            ByGenres_API_URL +
-            '&with_genres=' +
-            encodeURI(selectedGenre.join(','));
+          if (selectedGenre !== []) {
+            SelectedAPI =
+              ByGenres_API_URL +
+              '&with_genres=' +
+              encodeURI(selectedGenre.join(','));
+          } else {
+            SelectedAPI = 'https://api.themoviedb.org/3/movie/popular';
+          }
           renderMovieCard(SelectedAPI);
-          console.log(selectedGenre);
         });
         genres.append(movieGenre);
       }
@@ -45,5 +49,15 @@ const getGenres = event => {
   };
   getList();
 };
+
+const clearGenres = event => {
+  selectedGenre.forEach(id =>
+    document.getElementById(id).classList.remove('focused-genre')
+  );
+  selectedGenre = [];
+  SelectedAPI = 'https://api.themoviedb.org/3/movie/popular';
+  renderMovieCard(SelectedAPI);
+};
+
+genresClear.addEventListener('click', clearGenres);
 getGenres();
-export { getGenres };

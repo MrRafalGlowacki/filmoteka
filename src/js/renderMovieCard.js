@@ -29,7 +29,7 @@ const render = elem => {
     <p class="movie-card__genre-year">${singleMovieGenres} | ${getMovieYear(
     elem.release_date
   )}</p> 
-    <p class="movie-card__id>${elem.id}</p> 
+    <p class="movie-card__id">${elem.id}</p> 
   </div>
 </div>
 `;

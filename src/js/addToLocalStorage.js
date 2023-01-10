@@ -7,8 +7,6 @@ let queueMovies = [];
 let watchedMovies = [];
 let movieId = [];
 
-console.log(watchedMovies.length);
-console.log(queueMovies.length);
 const checkTheLocalStorage = event => {
   if (event.target.className === 'movie-card__image') {
     movieId = event.target.parentNode.children[1].children[2].textContent;
@@ -37,8 +35,6 @@ const checkTheLocalStorage = event => {
   } else {
     addToWatched.textContent = 'add to watched';
   }
-  console.log(watchedMovies.includes(movieId));
-  console.log(watchedMovies);
 };
 const queueStorage = event => {
   if (!queueMovies.includes(movieId)) {

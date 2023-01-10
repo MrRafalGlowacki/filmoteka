@@ -4,7 +4,8 @@ $colors: (
   'button-color': #ff6b01,
   'bgd': #545454,
   'bgd-dark': #000000,
-  'underline-color': #FF6B08,
+  'underline-color': #ff6b08,
+  'menu-holder': #b64e03,
 );
 
 @function getColor($key) {
@@ -12,4 +13,3 @@ $colors: (
 }
 
 // aby użyć koloru w projecie wpisujemy w sekcji np background-color: getColor("main-color");
-

@@ -15,8 +15,8 @@
   position: relative;
   display: inline-block;
   &__btn {
-    background: #ff6b01;
-    color: white;
+    background: getColor('button-color');
+    color: getColor('basic-color');
     padding: 16px;
     font-size: 16px;
     border-radius: 5px;
@@ -25,13 +25,13 @@
     margin-bottom: 5px;
   }
   &:hover .genres-menu__btn {
-    background: #b64e03;
+    background: getColor('menu-holder');
   }
 
   &__select {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: getColor('basic-color');
     min-width: 160px;
     gap: 3px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -43,31 +43,31 @@
     }
   }
   &__clear {
-    background: #ff6b01;
-    color: white;
+    background: getColor('button-color');
+    color: getColor('basic-color');
     border-radius: 5px;
     border: none;
     cursor: pointer;
     margin-bottom: 5px;
     &:hover {
-      background: #b64e03;
+      background: getColor('menu-holder');
     }
   }
 }
 .genre {
-  color: black;
-  padding: 12px 2px;
+  color: getColor('bgd-dark');
+  padding: 5px 2px;
   text-decoration: none;
   border-radius: 5px;
-  border: 1px solid #ff6b01;
+  border: 1px solid getColor('button-color');
   display: block;
   &:hover {
-    background: #ff6b01;
+    background: getColor('button-color');
     cursor: pointer;
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 .focused-genre {
-  background: #ff6b01;
+  background: getColor('button-color');
 }

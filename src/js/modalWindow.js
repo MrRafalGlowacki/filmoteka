@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { queueStorageAdd } from './addToLocalStorage';
 const modalOpen = document.querySelector('.modal');
 const modalBackdrop = document.querySelector('.modal__backdrop');
 const modalClose = document.querySelector('.modal__close');
@@ -10,20 +11,23 @@ const modalInfoTitle = document.querySelector('.orginal-title');
 const modalPopularity = document.querySelector('.popularity');
 const modalRate = document.querySelector('.rate');
 const modalTotalRate = document.querySelector('.rate__total');
-let isModalOpen = false;
 const modalId = document.querySelector('.modal__id');
+const addToQueue = document.querySelector('.queue-btn');
+const addToWatched = document.querySelector('.watched-btn');
+
+let isModalOpen = false;
 let movieId = '';
+let queueMovies = [];
+let watchedMovies = [];
 const API_KEY = 'b942b8bf626a04f48b07153a95ee51a0';
 
 const modalInformation = async (
   link = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`
 ) => {
   const response = await axios.get(link);
-
   const movieGenres = response.data.genres.map(function (item) {
     return item['name'];
   });
-
   modalGene.textContent = movieGenres.join(', ');
   modalRate.textContent = (
     Math.round(response.data.vote_average * 10) / 10
@@ -45,7 +49,6 @@ const modalWindowOpen = async event => {
     modalImage.src = event.target.src;
     modalOpen.style.display = 'flex';
     modalBackdrop.style.display = 'flex';
-
     isModalOpen = true;
   }
 };

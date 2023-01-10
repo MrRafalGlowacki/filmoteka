@@ -3,7 +3,7 @@ import { getGenresList } from './getGenreList';
 import { getMovies } from './getMovies';
 import { render } from './renderMovieCard';
 import * as pagination from './pagination';
-import { onTopScroll } from './searchAndRenderMovies';
+import { onTopScroll } from './toTopBtn';
 
 let genreList;
 let currentPage = 1;

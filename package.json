@@ -24,7 +24,9 @@
     "notiflix": "^3.2.5"
   },
   "devDependencies": {
+    "@parcel/packager-raw-url": "^2.8.2",
     "@parcel/transformer-sass": "^2.8.2",
+    "@parcel/transformer-webmanifest": "^2.8.2",
     "buffer": "^5.7.1",
     "parcel": "^2.8.2",
     "parcel-reporter-clean-dist": "^1.0.4",

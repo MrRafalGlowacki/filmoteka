@@ -68,7 +68,7 @@ const renderMovieCard = async (link, pageNumber) => {
 
 export const cleanUpListeners = () => {
   pagination.nextButton.removeEventListener('click', globalNextBtnFunc);
-  pagination.prevButton.removeEventListener('click', prevBtnFunc);
+  pagination.prevButton.removeEventListener('click', globalPrevBtnFunc);
 };
 
 const getGenreList = () => {

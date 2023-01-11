@@ -8,6 +8,7 @@ const loader = document.querySelector('.loader');
 const watchedBtn = document.querySelector('.watched-list-btn');
 const queueBtn = document.querySelector('.queue-list-btn');
 const main = document.querySelector('.main-box');
+watchedBtn.style.backgroundColor = ' #ff6b01';
 
 const getMoviesbyId = async movieID => {
   loader.style.display = 'block';
@@ -24,15 +25,20 @@ const getMoviesbyId = async movieID => {
 };
 
 //watched
-
 let watchedMovies = [];
+getWatchedMovies();
+
 
 async function getWatchedMovies() {
   queueBtn.removeAttribute('disabled');
   main.innerHTML = '';
+  watchedBtn.style.backgroundColor = ' #ff6b01';
+  queueBtn.style.backgroundColor = ' transparent';
+  console.log(localStorage.getItem('added-to-watched').length);
 
-  if (localStorage.getItem('added-to-watched') === null) {
+  if (localStorage.getItem('added-to-watched').length === 2) {
     Notify.info('There are no movies in your watched list!');
+    loader.style.display = 'none';
   } else {
     watchedMovies = JSON.parse(localStorage.getItem('added-to-watched'));
 
@@ -62,6 +68,8 @@ let queuedMovies = [];
 async function getQueuedMovies() {
   watchedBtn.removeAttribute('disabled');
   main.innerHTML = '';
+  watchedBtn.style.backgroundColor = 'transparent';
+  queueBtn.style.backgroundColor = ' #ff6b01';
 
   if (localStorage.getItem('added-to-queue') === null) {
     Notify.info('There are no movies in your queue!');

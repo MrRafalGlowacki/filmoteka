@@ -77,6 +77,11 @@ const handlePageButtonsStatus = () => {
   } else {
     enableButton(nextButton);
   }
+  if (pageCount <= 1) {
+    disableButton(nextButton);
+  } else {
+    enableButton(nextButton);
+  }
 };
 
 const displayLessPages = pageNum => {
@@ -113,6 +118,9 @@ const displayLessPages = pageNum => {
         button.classList.remove('hidden');
       } else {
         button.classList.add('hidden');
+      }
+      if (pageCount <= 3) {
+        button.classList.remove('hidden-mobile');
       }
     } else if (pageNum >= pageCount - 2) {
       if (pageIndex == 1) {

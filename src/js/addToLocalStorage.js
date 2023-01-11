@@ -1,7 +1,6 @@
 import Notiflix from 'notiflix';
 const addToQueue = document.querySelector('.queue-btn');
 const addToWatched = document.querySelector('.watched-btn');
-const modalId = document.querySelector('.modal__id');
 
 let queueMovies = [];
 let watchedMovies = [];

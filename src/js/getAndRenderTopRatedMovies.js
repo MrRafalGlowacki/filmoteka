@@ -4,17 +4,14 @@ import { getMovies } from './getMovies';
 import { render } from './renderMovieCard';
 import * as pagination from './pagination';
 import { onTopScroll } from './toTopBtn';
-
+let globalNextBtnFunc;
+let globalPrevBtnFunc;
 let genreList;
 let currentPage = 1;
 const renderMovieCard = async (link, pageNumber) => {
   try {
-    const PromisesArray = [];
-    PromisesArray.push(getMovies(link, currentPage));
-    PromisesArray.push(getGenresList());
-    const getMoviesAndGenres = await Promise.all(PromisesArray);
-    let movies = getMoviesAndGenres[0];
-    genreList = getMoviesAndGenres[1];
+    let movies = await getMovies(link, currentPage);
+    genreList = await getGenresList();
     main.innerHTML = '';
     movies.data.results.map(elem => {
       main.insertAdjacentHTML('beforeend', render(elem));
@@ -23,7 +20,8 @@ const renderMovieCard = async (link, pageNumber) => {
       ? pagination.getPaginationNumbers(movies.data.total_pages)
       : pagination.getPaginationNumbers(500);
     pagination.setCurrentPage(currentPage);
-    pagination.prevButton.addEventListener('click', async () => {
+    //
+    globalPrevBtnFunc = prevBtnFunc = async () => {
       pagination.setCurrentPage(currentPage - 1);
       movies = await getMovies(link, --currentPage);
       main.innerHTML = '';
@@ -31,8 +29,11 @@ const renderMovieCard = async (link, pageNumber) => {
         main.insertAdjacentHTML('beforeend', render(elem));
       });
       onTopScroll();
-    });
-    pagination.nextButton.addEventListener('click', async () => {
+    };
+    //
+    pagination.prevButton.addEventListener('click', prevBtnFunc);
+    //
+    globalNextBtnFunc = nextBtnFunc = async () => {
       pagination.setCurrentPage(currentPage + 1);
       movies = await getMovies(link, ++currentPage);
       main.innerHTML = '';
@@ -40,7 +41,10 @@ const renderMovieCard = async (link, pageNumber) => {
         main.insertAdjacentHTML('beforeend', render(elem));
       });
       onTopScroll();
-    });
+    };
+
+    pagination.nextButton.addEventListener('click', nextBtnFunc);
+
     document.querySelectorAll('.pagination__number').forEach(button => {
       const pageIndex = Number(button.getAttribute('page-index'));
       if (pageIndex) {
@@ -60,6 +64,12 @@ const renderMovieCard = async (link, pageNumber) => {
   } catch (error) {
     console.log('err ', error);
   }
+};
+
+export const cleanUpListeners = () => {
+  console.log('jestemmmm');
+  pagination.nextButton.removeEventListener('click', globalNextBtnFunc);
+  pagination.prevButton.removeEventListener('click', prevBtnFunc);
 };
 
 const getGenreList = () => {

@@ -1,4 +1,7 @@
-import { renderMovieCard } from './getAndRenderTopRatedMovies';
+import {
+  renderMovieCard,
+  cleanUpListeners,
+} from './getAndRenderTopRatedMovies';
 const genres = document.querySelector('.genres-menu__select');
 const genresClear = document.querySelector('.genres-menu__clear');
 let ByGenres_API_URL = 'https://api.themoviedb.org/3/discover/movie?';
@@ -41,6 +44,7 @@ const getGenres = event => {
           } else {
             SelectedAPI = 'https://api.themoviedb.org/3/movie/popular';
           }
+          cleanUpListeners();
           renderMovieCard(SelectedAPI);
         });
         genres.append(movieGenre);
@@ -56,6 +60,7 @@ const clearGenres = event => {
   );
   selectedGenre = [];
   SelectedAPI = 'https://api.themoviedb.org/3/movie/popular';
+  cleanUpListeners();
   renderMovieCard(SelectedAPI);
 };
 

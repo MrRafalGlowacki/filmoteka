@@ -11,7 +11,7 @@ let SelectedAPI = 'https://api.themoviedb.org/3/movie/popular';
 import { getGenresList } from './getGenreList';
 
 let selectedGenre = [];
-
+let tmp = 1;
 const getGenres = event => {
   const genreList = getGenresList();
   const getList = () => {
@@ -37,6 +37,7 @@ const getGenres = event => {
             selectedGenre.push(listOfGenres.data.genres[i].id);
           }
           if (selectedGenre !== []) {
+            tmp = 1;
             SelectedAPI =
               ByGenres_API_URL +
               '&with_genres=' +
@@ -45,7 +46,7 @@ const getGenres = event => {
             SelectedAPI = 'https://api.themoviedb.org/3/movie/popular';
           }
           cleanUpListeners();
-          renderMovieCard(SelectedAPI);
+          renderMovieCard(SelectedAPI, tmp);
         });
         genres.append(movieGenre);
       }

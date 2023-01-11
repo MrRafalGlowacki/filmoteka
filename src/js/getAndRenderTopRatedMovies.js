@@ -8,8 +8,9 @@ let globalNextBtnFunc;
 let globalPrevBtnFunc;
 let genreList;
 let currentPage = 1;
-const renderMovieCard = async (link, pageNumber) => {
+const renderMovieCard = async (link, pageNumber = 1) => {
   try {
+    currentPage = pageNumber;
     let movies = await getMovies(link, currentPage);
     genreList = await getGenresList();
     main.innerHTML = '';

@@ -10,7 +10,7 @@
   left: 50%;
   transform: translate(-50%, 0);
   font-family: 'Roboto';
-  background: #ffffff;
+  background: getColor('basic-color');
   font-weight: 500;
   font-size: 12px;
   line-height: 1.34;
@@ -30,7 +30,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background: #000000;
+    background: getColor('bgd-dark');
     opacity: 0.25;
     z-index: 1;
   }
@@ -103,7 +103,7 @@
     width: 30px;
     border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    background: #ffffff;
+    background: getColor('basic-color');
 
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -121,17 +121,18 @@
   }
 }
 .rate {
+  display: flex;
   text-align: center;
-  color: #ffffff;
-  background: #ff6b01;
+  color: getColor('basic-color');
+  background: getColor('button-color');
   border-radius: 5px;
-  padding: 0px 10px;
+  padding: 1px 10px 1px 10px;
   line-height: 1.17;
   &__total {
-    padding: 0px 4px;
+    padding: 1px 10px 1px 10px;
     line-height: 1.17;
     border-radius: 5px;
-    background: #f7f7f7;
+    background: getColor('basic-lighter');
   }
 }
 .watched-btn {
@@ -139,8 +140,8 @@
   width: 113px;
   height: 44px;
   text-transform: uppercase;
-  background: #ff6b01;
-  color: #ffffff;
+  background: getColor('button-color');
+  color: getColor('basic-color');
   border-radius: 5px;
   border: 0px;
   transition-duration: 250ms;
@@ -161,7 +162,7 @@
   width: 113px;
   height: 44px;
   text-transform: uppercase;
-  border: 1px solid #000000;
+  border: 1px solid getColor('bgd-dark');
   border-radius: 5px;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);

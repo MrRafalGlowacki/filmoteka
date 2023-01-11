@@ -17,8 +17,8 @@
   &__btn {
     background: getColor('button-color');
     color: getColor('basic-color');
-    padding: 16px;
-    font-size: 16px;
+    padding: 10px;
+    font-size: 14px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
@@ -32,7 +32,7 @@
     display: none;
     position: absolute;
     background-color: getColor('basic-color');
-    min-width: 160px;
+    min-width: 135px;
     gap: 3px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -57,6 +57,7 @@
 .genre {
   color: getColor('bgd-dark');
   padding: 5px 2px;
+  font-size: 14px;
   text-decoration: none;
   border-radius: 5px;
   border: 1px solid getColor('button-color');
@@ -70,4 +71,20 @@
 }
 .focused-genre {
   background: getColor('button-color');
+}
+
+@media screen and (min-width: 1024px) {
+  .genres-menu {
+    &__btn {
+      padding: 16px;
+      font-size: 16px;
+    }
+    &__select {
+      min-width: 160px;
+    }
+  }
+  .genre {
+    padding: 5px 2px;
+    font-size: 16px;
+  }
 }

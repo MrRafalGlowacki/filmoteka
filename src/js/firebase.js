@@ -16,7 +16,7 @@ const auth = getAuth();
 const provider = new GoogleAuthProvider();
 const signWithGoogleBtn = document.querySelector('#sign-in-google');
 const form = document.querySelector('#sign-in-form');
-const AuthModal = document.querySelector('.logIn-modal');
+const authModal = document.querySelector('.logIn-modal');
 const signOutBtn = document.querySelector('#sign-out-btn');
 const logInBtn = document.querySelector('#logIn');
 const closeModalBtn = document.querySelector('#form-modal-close');
@@ -42,7 +42,7 @@ const showSignInContent = () => {
   signWithGoogleBtn.style.display = 'none';
   signOutBtn.classList.remove('is-hidden');
   logInBtn.classList.add('is-hidden');
-  AuthModal.classList.add('is-hidden');
+  authModal.classList.add('is-hidden');
 };
 // potrzebne do zalogowania
 const showSignInForm = () => {
@@ -51,7 +51,6 @@ const showSignInForm = () => {
   signWithGoogleBtn.style.display = 'block';
   signOutBtn.classList.add('is-hidden');
   logInBtn.classList.remove('is-hidden');
- 
 };
 // zmiana stanu zalogowania
 const handleAuthChanged = user => {
@@ -65,18 +64,41 @@ const handleAuthChanged = user => {
 onAuthStateChanged(auth, handleAuthChanged);
 
 // pokaż modal
-const showAuthForm = () => {
-  AuthModal.classList.remove('is-hidden');
+const showAuthForm = async () => {
+  authModal.classList.remove('is-hidden');
   logInBtn.classList.add('is-hidden');
   closeModalBtn.addEventListener('click', closeModalhandler);
   formSwitchBtn.addEventListener('click', formUpdate);
   form.addEventListener('submit', handleFormSubmit);
   signWithGoogleBtn.addEventListener('click', signInWithGoogle);
+  addEventListener('keydown', clickEscape);
+  addEventListener('click', closeByClick);
 };
 // zamknij modal
 const closeModalhandler = () => {
-  AuthModal.classList.add('is-hidden');
+  authModal.classList.add('is-hidden');
   logInBtn.classList.remove('is-hidden');
+  closeModalBtn.removeEventListener('click', closeModalhandler);
+  formSwitchBtn.removeEventListener('click', formUpdate);
+  form.removeEventListener('submit', handleFormSubmit);
+  signWithGoogleBtn.removeEventListener('click', signInWithGoogle);
+  removeEventListener('keydown', clickEscape);
+  removeEventListener('click', closeByClick);
+};
+//zamknij na esc
+const clickEscape = event => {
+  if (event.keyCode === 27) {
+    closeModalhandler();
+  }
+};
+// zamknij na klik poza oknem modalny,
+const closeByClick = event => {
+  if (
+    !event.target.classList.contains('is-hidden') &&
+    !event.target.closest('.auth-modal')
+  ) {
+    closeModalhandler();
+  }
 };
 // Tworzenie nowego konta
 const registrationNewUser = (email, password) => {

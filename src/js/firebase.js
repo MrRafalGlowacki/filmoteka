@@ -64,7 +64,7 @@ const handleAuthChanged = user => {
 onAuthStateChanged(auth, handleAuthChanged);
 
 // pokaż modal
-const showAuthForm = async () => {
+const showAuthForm = () => {
   authModal.classList.remove('is-hidden');
   logInBtn.classList.add('is-hidden');
   closeModalBtn.addEventListener('click', closeModalhandler);

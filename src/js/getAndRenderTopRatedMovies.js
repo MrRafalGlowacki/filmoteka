@@ -21,7 +21,7 @@ const renderMovieCard = async (link, pageNumber) => {
       : pagination.getPaginationNumbers(500);
     pagination.setCurrentPage(currentPage);
     //
-    globalPrevBtnFunc = prevBtnFunc = async () => {
+    globalPrevBtnFunc = async () => {
       pagination.setCurrentPage(currentPage - 1);
       movies = await getMovies(link, --currentPage);
       main.innerHTML = '';
@@ -31,9 +31,9 @@ const renderMovieCard = async (link, pageNumber) => {
       onTopScroll();
     };
     //
-    pagination.prevButton.addEventListener('click', prevBtnFunc);
+    pagination.prevButton.addEventListener('click', globalPrevBtnFunc);
     //
-    globalNextBtnFunc = nextBtnFunc = async () => {
+    globalNextBtnFunc = async () => {
       pagination.setCurrentPage(currentPage + 1);
       movies = await getMovies(link, ++currentPage);
       main.innerHTML = '';
@@ -43,7 +43,7 @@ const renderMovieCard = async (link, pageNumber) => {
       onTopScroll();
     };
 
-    pagination.nextButton.addEventListener('click', nextBtnFunc);
+    pagination.nextButton.addEventListener('click', globalNextBtnFunc);
 
     document.querySelectorAll('.pagination__number').forEach(button => {
       const pageIndex = Number(button.getAttribute('page-index'));

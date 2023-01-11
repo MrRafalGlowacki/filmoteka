@@ -44,8 +44,8 @@ const getGenres = event => {
           } else {
             SelectedAPI = 'https://api.themoviedb.org/3/movie/popular';
           }
-          renderMovieCard(SelectedAPI);
           cleanUpListeners();
+          renderMovieCard(SelectedAPI);
         });
         genres.append(movieGenre);
       }
@@ -60,8 +60,8 @@ const clearGenres = event => {
   );
   selectedGenre = [];
   SelectedAPI = 'https://api.themoviedb.org/3/movie/popular';
-  renderMovieCard(SelectedAPI);
   cleanUpListeners();
+  renderMovieCard(SelectedAPI);
 };
 
 genresClear.addEventListener('click', clearGenres);

@@ -1,6 +1,6 @@
 import { getGenreList } from './getAndRenderTopRatedMovies';
 import { imageExists, getMovieYear } from './exportFunctions';
-const getMovieYear = "" 
+// const getMovieYear =
 // date => {
 //   return 
 //   date.substring(0, 4);

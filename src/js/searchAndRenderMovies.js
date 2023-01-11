@@ -1,6 +1,7 @@
 import { getMovies } from '../getMovies';
 import { render } from './renderMovieCard';
 import * as pagination from './pagination';
+import { onTopScroll } from './toTopBtn';
 
 const header = document.querySelector('.header__no-movies');
 const main = document.querySelector('.main-box');

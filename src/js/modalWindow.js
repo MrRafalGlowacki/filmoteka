@@ -11,13 +11,9 @@ const modalPopularity = document.querySelector('.popularity');
 const modalRate = document.querySelector('.rate');
 const modalTotalRate = document.querySelector('.rate__total');
 const modalId = document.querySelector('.modal__id');
-const addToQueue = document.querySelector('.queue-btn');
-const addToWatched = document.querySelector('.watched-btn');
 
 let isModalOpen = false;
 let movieId = '';
-let queueMovies = [];
-let watchedMovies = [];
 const API_KEY = 'b942b8bf626a04f48b07153a95ee51a0';
 
 const modalInformation = async (

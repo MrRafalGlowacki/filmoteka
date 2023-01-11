@@ -91,7 +91,7 @@ const clickEscape = event => {
     closeModalhandler();
   }
 };
-// zamknij na klik poza oknem modalny,
+// zamknij na klik poza oknem modalnym
 const closeByClick = event => {
   if (
     !event.target.classList.contains('is-hidden') &&

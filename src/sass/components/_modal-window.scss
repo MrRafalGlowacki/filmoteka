@@ -218,3 +218,8 @@
     }
   }
 }
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .modal {
+    max-height: 85vh;
+  }
+}

@@ -24,7 +24,7 @@
   transform: scale(1);
 
   /*  border: 2px solid #640064; */
-  border-radius: 10px;
+  border-radius: 6px;
 
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -44,7 +44,6 @@
   }
   &__label {
     padding-top: 10px;
-    padding-left: 5px;
     align-items: center;
     font-size: 12px;
     font-weight: 500;

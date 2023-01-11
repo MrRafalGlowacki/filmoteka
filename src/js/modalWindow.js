@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { queueStorageAdd } from './addToLocalStorage';
 const modalOpen = document.querySelector('.modal');
 const modalBackdrop = document.querySelector('.modal__backdrop');
 const modalClose = document.querySelector('.modal__close');

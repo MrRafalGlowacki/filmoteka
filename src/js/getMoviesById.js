@@ -28,32 +28,33 @@ const getMoviesbyId = async movieID => {
 let watchedMovies = [];
 getWatchedMovies();
 
-
 async function getWatchedMovies() {
   queueBtn.removeAttribute('disabled');
   main.innerHTML = '';
   watchedBtn.style.backgroundColor = ' #ff6b01';
   queueBtn.style.backgroundColor = ' transparent';
-  console.log(localStorage.getItem('added-to-watched').length);
+  if (JSON.parse(localStorage.getItem('added-to-watched')) !== null) {
+    if (JSON.parse(localStorage.getItem('added-to-watched')).length === 0) {
+      Notify.info('There are no movies in your watched list!');
+      loader.style.display = 'none';
+    } else {
+      watchedMovies = JSON.parse(localStorage.getItem('added-to-watched'));
 
-  if (localStorage.getItem('added-to-watched').length === 2) {
-    Notify.info('There are no movies in your watched list!');
-    loader.style.display = 'none';
-  } else {
-    watchedMovies = JSON.parse(localStorage.getItem('added-to-watched'));
+      let watchedMoviesList = [];
 
-    let watchedMoviesList = [];
+      for (let i = 0; i < watchedMovies.length; i++) {
+        let watchedMovieId = watchedMovies[i];
 
-    for (let i = 0; i < watchedMovies.length; i++) {
-      let watchedMovieId = watchedMovies[i];
+        let watchedMoviesItem = await getMoviesbyId(watchedMovieId);
 
-      let watchedMoviesItem = await getMoviesbyId(watchedMovieId);
-
-      watchedMoviesList.push(watchedMoviesItem);
+        watchedMoviesList.push(watchedMoviesItem);
+      }
+      renderMovies(watchedMoviesList);
     }
-    renderMovies(watchedMoviesList);
+    watchedBtn.setAttribute('disabled', true);
+  } else {
+    Notify.info('There are no movies in your watched list!');
   }
-  watchedBtn.setAttribute('disabled', true);
 }
 
 watchedBtn.addEventListener('click', event => {
@@ -70,24 +71,25 @@ async function getQueuedMovies() {
   main.innerHTML = '';
   watchedBtn.style.backgroundColor = 'transparent';
   queueBtn.style.backgroundColor = ' #ff6b01';
+  if (JSON.parse(localStorage.getItem('added-to-queue')) !== null) {
+    if (JSON.parse(localStorage.getItem('added-to-queue')).length === 0) {
+      Notify.info('There are no movies in your queue!');
+    } else {
+      queuedMovies = JSON.parse(localStorage.getItem('added-to-queue'));
+      let queuedMoviesList = [];
 
-  if (localStorage.getItem('added-to-queue') === null) {
-    Notify.info('There are no movies in your queue!');
-  } else {
-    queuedMovies = JSON.parse(localStorage.getItem('added-to-queue'));
-    let queuedMoviesList = [];
+      for (let i = 0; i < queuedMovies.length; i++) {
+        let queuedMovieId = queuedMovies[i];
 
-    for (let i = 0; i < queuedMovies.length; i++) {
-      let queuedMovieId = queuedMovies[i];
-
-      let queuedMoviesItem = await getMoviesbyId(queuedMovieId);
-      queuedMoviesList.push(queuedMoviesItem);
+        let queuedMoviesItem = await getMoviesbyId(queuedMovieId);
+        queuedMoviesList.push(queuedMoviesItem);
+      }
+      renderMovies(queuedMoviesList);
     }
-
-    renderMovies(queuedMoviesList);
+    queueBtn.setAttribute('disabled', true);
+  } else {
+    Notify.info('There are no movies in your queue!');
   }
-
-  queueBtn.setAttribute('disabled', true);
 }
 
 queueBtn.addEventListener('click', event => {

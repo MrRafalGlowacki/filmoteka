@@ -5,9 +5,11 @@ const addToWatched = document.querySelector('.watched-btn');
 let queueMovies = [];
 let watchedMovies = [];
 let movieId = [];
+let displayCard = '';
 
 const checkTheLocalStorage = event => {
   if (event.target.className === 'movie-card__image') {
+    displayCard = event.target.parentNode.parentNode;
     movieId = event.target.parentNode.children[1].children[2].textContent;
     if (
       queueMovies.length === 0 &&
@@ -35,6 +37,7 @@ const checkTheLocalStorage = event => {
     addToWatched.textContent = 'add to watched';
   }
 };
+
 const queueStorage = event => {
   if (!queueMovies.includes(movieId)) {
     queueMovies.push(movieId);

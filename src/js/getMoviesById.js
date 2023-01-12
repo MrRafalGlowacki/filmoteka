@@ -42,6 +42,7 @@ async function getWatchedMovies() {
   watchedBtn.style.backgroundColor = ' #ff6b01';
   queueBtn.style.backgroundColor = ' transparent';
   watchedBtn.style.backgroundColor = ' #ff6b01';
+  let watchedMoviesNumber = JSON.parse(localStorage.getItem('added-to-watched')).length;
 
   if (JSON.parse(localStorage.getItem('added-to-watched')) !== null) {
     if (JSON.parse(localStorage.getItem('added-to-watched')).length === 0) {
@@ -86,6 +87,7 @@ async function getQueuedMovies() {
   main.innerHTML = '';
   watchedBtn.style.backgroundColor = 'transparent';
   queueBtn.style.backgroundColor = ' #ff6b01';
+  let queuedMoviesNumber = JSON.parse(localStorage.getItem('added-to-queue')).length;
 
   if (JSON.parse(localStorage.getItem('added-to-queue')) !== null) {
     if (JSON.parse(localStorage.getItem('added-to-queue')).length === 0) {

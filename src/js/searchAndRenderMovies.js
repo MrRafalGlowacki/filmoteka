@@ -1,5 +1,6 @@
 import { getMovies } from '../getMovies';
 import { render } from './renderMovieCard';
+import { Notify } from 'notiflix';
 import * as pagination from './pagination';
 import { onTopScroll } from './toTopBtn';
 
@@ -19,7 +20,7 @@ async function renderFoundMovies(event) {
   currentPage = 1;
   const searchQuery = inputSearch.value;
   if (!searchQuery) {
-    alert('Enter movie title');
+    Notify.info('Enter movie title');
   } else {
     let moviesList = await getMovies(searchQuery, currentPage);
     if (!moviesList.results.length) {

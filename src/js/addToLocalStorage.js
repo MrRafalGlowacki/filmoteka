@@ -1,14 +1,15 @@
 import Notiflix from 'notiflix';
 const addToQueue = document.querySelector('.queue-btn');
 const addToWatched = document.querySelector('.watched-btn');
-const modalId = document.querySelector('.modal__id');
 
 let queueMovies = [];
 let watchedMovies = [];
 let movieId = [];
+let displayCard = '';
 
 const checkTheLocalStorage = event => {
   if (event.target.className === 'movie-card__image') {
+    displayCard = event.target.parentNode.parentNode;
     movieId = event.target.parentNode.children[1].children[2].textContent;
     if (
       queueMovies.length === 0 &&
@@ -36,6 +37,7 @@ const checkTheLocalStorage = event => {
     addToWatched.textContent = 'add to watched';
   }
 };
+
 const queueStorage = event => {
   if (!queueMovies.includes(movieId)) {
     queueMovies.push(movieId);

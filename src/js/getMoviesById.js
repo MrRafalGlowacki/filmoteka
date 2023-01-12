@@ -78,6 +78,7 @@ async function getQueuedMovies() {
     if (JSON.parse(localStorage.getItem('added-to-queue')).length === 0) {
       Notify.info('There are no movies in your queue!');
       loader.style.display = 'none';
+      
     } else {
       queuedMovies = JSON.parse(localStorage.getItem('added-to-queue'));
       let queuedMoviesList = [];

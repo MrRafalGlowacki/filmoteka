@@ -16,8 +16,8 @@
   display: block;
   transform: translate(-50%, -50%);
   width: 300px;
-  height: 600px;
-  // background-color: getColor(basic-color);
+  height: 1000px;
+  max-height: 85vh;
   overflow-y: scroll;
   transition-property: transform;
   transition-duration: 500ms;

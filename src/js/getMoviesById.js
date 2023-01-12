@@ -62,6 +62,7 @@ async function getWatchedMovies() {
       watchedMovies = JSON.parse(localStorage.getItem('added-to-watched'));
 
       let watchedMoviesList = [];
+      let paginatedList;
 
       for (let i = 0; i < watchedMovies.length; i++) {
         let watchedMovieId = watchedMovies[i];

@@ -2,15 +2,17 @@
   &__btn {
     position: absolute;
     left: 37px;
-    top: 40px;
+    top:  46px;
     background-color: transparent;
     border: none;
     cursor: pointer;
     padding: 0;
+    @media screen and (max-width: 767px) {
+      top: 49.5px;
+      left: 60px;
+    }
     svg {
-      width: 40px;
-      height: 40px;
-      padding: 9px;
+     
       fill: getColor(button-color);
       transition-property: fill;
       transition-duration: 250ms;
@@ -48,6 +50,11 @@ body.dark-theme {
     }
     &__button {
       color: getColor('basic-color');
+    }
+
+    &__number:focus,
+    &__number:hover {
+      color: getColor('underline-color');
     }
   }
 

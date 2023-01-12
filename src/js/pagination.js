@@ -79,8 +79,6 @@ const handlePageButtonsStatus = () => {
   }
   if (pageCount <= 1) {
     disableButton(nextButton);
-  } else {
-    enableButton(nextButton);
   }
 };
 

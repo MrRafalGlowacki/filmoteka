@@ -56,14 +56,14 @@
 
     @media screen and (max-width: 767px) {
     
-        background-image: url(../images/library_background.jpg);
+        background-image: url(../images/image-library/library_background.jpg);
         background-repeat: no-repeat;
         background-size: cover;
     
         @media screen and (min-device-pixel-ratio: 2),
         screen and (min-resolution: 192dpi),
         screen and (min-resolution: 2dppx) {
-            background-image: url(../images/library_background@2x.jpg);
+            background-image: url(../images/image-library/library_background@2x.jpg);
         }
     
             // @media screen and (-webkit-max-device-pixel-ratio: 3),
@@ -83,14 +83,14 @@
     }
     
     @media screen and (min-width: 768px) and (max-width: 1024px) {
-        background-image: url(../images/library_background-tablet.jpg);
+        background-image: url(../images/image-library/library_background-tablet.jpg);
         background-repeat: no-repeat;
         background-size: cover;
     
         @media screen and (min-device-pixel-ratio: 2),
         screen and (min-resolution: 192dpi),
         screen and (min-resolution: 2dppx) {
-            background-image: url(../images/library_background-tablet@2x.jpg);
+            background-image: url(../images/image-library/library_background-tablet@2x.jpg);
         }
     
             /*  @media screen and (-webkit-max-device-pixel-ratio: 3),
@@ -101,14 +101,14 @@
     }
     
     @media screen and (min-width: 1025px) {
-        background-image: url(../images/library_background-desktop.jpg);
+        background-image: url(../images/image-library/library_background-desktop.jpg);
         background-repeat: no-repeat;
         background-size: cover;
     
         @media screen and (min-device-pixel-ratio: 2),
         screen and (min-resolution: 192dpi),
         screen and (min-resolution: 2dppx) {
-            background-image: url(../images/library_background-desktop@2x.jpg);
+            background-image: url(../images/image-library/library_background-desktop@2x.jpg);
         }
     
             /* @media screen and (-webkit-max-device-pixel-ratio: 3),

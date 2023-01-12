@@ -5,3 +5,4 @@ import './js/modalWindow';
 import './js/firebase';
 import './js/students';
 import './js/toTopBtn';
+import './js/darkMode';

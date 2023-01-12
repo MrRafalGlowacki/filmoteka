@@ -24,22 +24,30 @@
   }
 }
 body.dark-theme {
-  background-color: getColor('bgd');
+  background-color: getColor('bgd-darker');
   color: getColor('basic-color');
   .icon {
-    color: getColor('bgd');
-  }
-  .header__logo-word {
     color: getColor('bgd');
   }
   .footer {
     color: getColor('basic-lighter');
     &__box {
-      background-color: #262626;
+      background-color: getColor('bgd');
 
       &__text {
         color: inherit;
       }
+    }
+  }
+  .movie-card__title {
+    color: getColor('basic-color');
+  }
+  .pagination {
+    &__number {
+      color: getColor('basic-color');
+    }
+    &__button {
+      color: getColor('basic-color');
     }
   }
 
@@ -85,9 +93,7 @@ body.dark-theme {
       }
     }
   }
-  .header-library__logo-word {
-    color: getColor('bgd');
-  }
+
   .auth {
     &-modal {
       background-color: getColor('bgd');

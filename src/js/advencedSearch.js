@@ -28,7 +28,6 @@ const getGenres = event => {
           } else if (selectedGenre.includes(listOfGenres.data.genres[i].id)) {
             selectedGenre.forEach((id, idClear) => {
               if (id == listOfGenres.data.genres[i].id) {
-                console.log(listOfGenres.data.genres[i].id);
                 selectedGenre.splice(idClear, 1);
                 movieGenre.classList.remove('focused-genre');
               }

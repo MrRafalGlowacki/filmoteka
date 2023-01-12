@@ -8,6 +8,9 @@ const loader = document.querySelector('.loader');
 const watchedBtn = document.querySelector('.watched-list-btn');
 const queueBtn = document.querySelector('.queue-list-btn');
 const main = document.querySelector('.main-box');
+const addToQueue = document.querySelector('.queue-btn');
+const addToWatched = document.querySelector('.watched-btn');
+
 watchedBtn.style.backgroundColor = ' #ff6b01';
 
 const getMoviesbyId = async movieID => {
@@ -28,32 +31,32 @@ const getMoviesbyId = async movieID => {
 let watchedMovies = [];
 getWatchedMovies();
 
-
 async function getWatchedMovies() {
   queueBtn.removeAttribute('disabled');
   main.innerHTML = '';
-  watchedBtn.style.backgroundColor = ' #ff6b01';
   queueBtn.style.backgroundColor = ' transparent';
-  console.log(localStorage.getItem('added-to-watched').length);
+  watchedBtn.style.backgroundColor = ' #ff6b01';
 
-  if (localStorage.getItem('added-to-watched').length === 2) {
-    Notify.info('There are no movies in your watched list!');
-    loader.style.display = 'none';
-  } else {
-    watchedMovies = JSON.parse(localStorage.getItem('added-to-watched'));
+  if (JSON.parse(localStorage.getItem('added-to-watched')) !== null) {
+    if (JSON.parse(localStorage.getItem('added-to-watched')).length === 0) {
+      Notify.info('There are no movies in your watched list!');
+      loader.style.display = 'none';
+    } else {
+      watchedMovies = JSON.parse(localStorage.getItem('added-to-watched'));
+      let watchedMoviesList = [];
 
-    let watchedMoviesList = [];
+      for (let i = 0; i < watchedMovies.length; i++) {
+        let watchedMovieId = watchedMovies[i];
+        let watchedMoviesItem = await getMoviesbyId(watchedMovieId);
 
-    for (let i = 0; i < watchedMovies.length; i++) {
-      let watchedMovieId = watchedMovies[i];
-
-      let watchedMoviesItem = await getMoviesbyId(watchedMovieId);
-
-      watchedMoviesList.push(watchedMoviesItem);
+        watchedMoviesList.push(watchedMoviesItem);
+      }
+      renderMovies(watchedMoviesList);
     }
-    renderMovies(watchedMoviesList);
+    watchedBtn.setAttribute('disabled', true);
+  } else {
+    Notify.info('There are no movies in your watched list!');
   }
-  watchedBtn.setAttribute('disabled', true);
 }
 
 watchedBtn.addEventListener('click', event => {
@@ -71,23 +74,26 @@ async function getQueuedMovies() {
   watchedBtn.style.backgroundColor = 'transparent';
   queueBtn.style.backgroundColor = ' #ff6b01';
 
-  if (localStorage.getItem('added-to-queue') === null) {
-    Notify.info('There are no movies in your queue!');
-  } else {
-    queuedMovies = JSON.parse(localStorage.getItem('added-to-queue'));
-    let queuedMoviesList = [];
+  if (JSON.parse(localStorage.getItem('added-to-queue')) !== null) {
+    if (JSON.parse(localStorage.getItem('added-to-queue')).length === 0) {
+      Notify.info('There are no movies in your queue!');
+      loader.style.display = 'none';
+    } else {
+      queuedMovies = JSON.parse(localStorage.getItem('added-to-queue'));
+      let queuedMoviesList = [];
 
-    for (let i = 0; i < queuedMovies.length; i++) {
-      let queuedMovieId = queuedMovies[i];
+      for (let i = 0; i < queuedMovies.length; i++) {
+        let queuedMovieId = queuedMovies[i];
+        let queuedMoviesItem = await getMoviesbyId(queuedMovieId);
 
-      let queuedMoviesItem = await getMoviesbyId(queuedMovieId);
-      queuedMoviesList.push(queuedMoviesItem);
+        queuedMoviesList.push(queuedMoviesItem);
+      }
+      renderMovies(queuedMoviesList);
     }
-
-    renderMovies(queuedMoviesList);
+    queueBtn.setAttribute('disabled', true);
+  } else {
+    Notify.info('There are no movies in your queue!');
   }
-
-  queueBtn.setAttribute('disabled', true);
 }
 
 queueBtn.addEventListener('click', event => {
@@ -132,6 +138,23 @@ function renderMovies(movies) {
 
   main.innerHTML += markup;
 }
+
+const queueRefresh = event => {
+  if (queueBtn.style.backgroundColor !== 'transparent') {
+    queueBtn.removeAttribute('disabled');
+    queueBtn.click();
+  }
+};
+const watchedRefresh = event => {
+  if (watchedBtn.style.backgroundColor !== 'transparent') {
+    watchedBtn.removeAttribute('disabled');
+    watchedBtn.click();
+  }
+};
+
+addToQueue.addEventListener('click', queueRefresh);
+addToWatched.addEventListener('click', watchedRefresh);
+
 //<p class="movie-card__genre-year">${singleMovieGenres} | ${getMovieYear(
 //movie.release_date
 //)}</p>

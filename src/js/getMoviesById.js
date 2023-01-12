@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { imageExists, getMovieYear } from './exportFunctions';
+import * as pagination from './pagination';
+import { onTopScroll } from './toTopBtn';
 
 let movieID = '';
 const API_KEY = 'b942b8bf626a04f48b07153a95ee51a0';
@@ -10,9 +12,9 @@ const main = document.querySelector('.main-box');
 const addToQueue = document.querySelector('.queue-btn');
 const addToWatched = document.querySelector('.watched-btn');
 
-
 watchedBtn.style.backgroundColor = ' #ff6b01';
 
+const itemsPerPage = 20;
 
 const getMoviesbyId = async movieID => {
   loader.style.display = 'block';
@@ -34,21 +36,26 @@ const getMoviesbyId = async movieID => {
 let watchedMovies = [];
 getWatchedMovies();
 
-
-
 async function getWatchedMovies() {
   queueBtn.removeAttribute('disabled');
   main.innerHTML = '';
   watchedBtn.style.backgroundColor = ' #ff6b01';
   queueBtn.style.backgroundColor = ' transparent';
   watchedBtn.style.backgroundColor = ' #ff6b01';
-  queueBtn.textContent=`QUEUE`
+  queueBtn.textContent = `QUEUE`;
+  let totalPages;
+  let currentPage = 1;
 
   if (JSON.parse(localStorage.getItem('added-to-watched')) !== null) {
-  let watchedMoviesNumber = JSON.parse(localStorage.getItem('added-to-watched')).length;
-  
+    let watchedMoviesNumber = JSON.parse(
+      localStorage.getItem('added-to-watched')
+    ).length;
+
     if (JSON.parse(localStorage.getItem('added-to-watched')).length === 0) {
-      main.insertAdjacentHTML('beforeend', `<p class="alert">There are no movies in your watched list!</p>`);
+      main.insertAdjacentHTML(
+        'beforeend',
+        `<p class="alert">There are no movies in your watched list!</p>`
+      );
       watchedBtn.textContent = `WATCHED`;
       loader.style.display = 'none';
     } else {
@@ -63,18 +70,73 @@ async function getWatchedMovies() {
 
         watchedMoviesList.push(watchedMoviesItem);
       }
-      renderMovies(watchedMoviesList);
+
+      totalPages = Math.ceil(watchedMoviesList.length / itemsPerPage);
+
+      paginatedList = watchedMoviesList.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+      );
+      renderMovies(paginatedList);
+
+      pagination.getPaginationNumbers(totalPages);
+      pagination.setCurrentPage(currentPage);
+
+      pagination.prevButton.addEventListener('click', async () => {
+        pagination.setCurrentPage(--currentPage);
+        paginatedList = watchedMoviesList.slice(
+          (currentPage - 1) * itemsPerPage,
+          currentPage * itemsPerPage
+        );
+        main.innerHTML = '';
+        console.log(paginatedList);
+
+        renderMovies(paginatedList);
+        onTopScroll();
+      });
+      pagination.nextButton.addEventListener('click', async () => {
+        pagination.setCurrentPage(++currentPage);
+        paginatedList = watchedMoviesList.slice(
+          (currentPage - 1) * itemsPerPage,
+          currentPage * itemsPerPage
+        );
+        main.innerHTML = '';
+        console.log(paginatedList);
+
+        renderMovies(paginatedList);
+        onTopScroll();
+      });
+      document.querySelectorAll('.pagination__number').forEach(button => {
+        const pageIndex = Number(button.getAttribute('page-index'));
+        if (pageIndex) {
+          button.addEventListener('click', async () => {
+            pagination.setCurrentPage(pageIndex);
+            currentPage = pageIndex;
+
+            paginatedList = watchedMoviesList.slice(
+              (currentPage - 1) * itemsPerPage,
+              currentPage * itemsPerPage
+            );
+            main.innerHTML = '';
+            console.log(paginatedList);
+
+            renderMovies(paginatedList);
+            onTopScroll();
+          });
+        }
+      });
+
       watchedBtn.textContent = `WATCHED : ${watchedMoviesNumber}`;
-      
     }
   } else {
-      main.insertAdjacentHTML('beforeend', `<p class="alert">There are no movies in your watched list!</p>`);
-      watchedBtn.textContent = `WATCHED`;
-      loader.style.display = 'none';
+    main.insertAdjacentHTML(
+      'beforeend',
+      `<p class="alert">There are no movies in your watched list!</p>`
+    );
+    watchedBtn.textContent = `WATCHED`;
+    loader.style.display = 'none';
   }
-    watchedBtn.setAttribute('disabled', true);
-  
-  
+  watchedBtn.setAttribute('disabled', true);
 }
 
 watchedBtn.addEventListener('click', event => {
@@ -92,18 +154,25 @@ async function getQueuedMovies() {
   watchedBtn.style.backgroundColor = 'transparent';
   queueBtn.style.backgroundColor = ' #ff6b01';
   watchedBtn.textContent = `WATCHED`;
+  let totalPages;
+  let currentPage = 1;
 
   if (JSON.parse(localStorage.getItem('added-to-queue')) !== null) {
-  let queuedMoviesNumber = JSON.parse(localStorage.getItem('added-to-queue')).length;
-    
-    if (JSON.parse(localStorage.getItem('added-to-queue')).length === 0) {
-    main.insertAdjacentHTML('beforeend', `<p class="alert">There are no movies in your queue!</p>`);
-    queueBtn.textContent = `QUEUE`;
-    loader.style.display = 'none';
+    let queuedMoviesNumber = JSON.parse(
+      localStorage.getItem('added-to-queue')
+    ).length;
 
+    if (JSON.parse(localStorage.getItem('added-to-queue')).length === 0) {
+      main.insertAdjacentHTML(
+        'beforeend',
+        `<p class="alert">There are no movies in your queue!</p>`
+      );
+      queueBtn.textContent = `QUEUE`;
+      loader.style.display = 'none';
     } else {
       queuedMovies = JSON.parse(localStorage.getItem('added-to-queue'));
       let queuedMoviesList = [];
+      let paginatedList;
 
       for (let i = 0; i < queuedMovies.length; i++) {
         let queuedMovieId = queuedMovies[i];
@@ -112,25 +181,79 @@ async function getQueuedMovies() {
 
         queuedMoviesList.push(queuedMoviesItem);
       }
-      renderMovies(queuedMoviesList);
-      queueBtn.textContent=`QUEUE : ${queuedMoviesNumber}`
-      
+
+      totalPages = Math.ceil(queuedMoviesList.length / itemsPerPage);
+
+      paginatedList = queuedMoviesList.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+      );
+      renderMovies(paginatedList);
+
+      pagination.getPaginationNumbers(totalPages);
+      pagination.setCurrentPage(currentPage);
+
+      pagination.prevButton.addEventListener('click', async () => {
+        pagination.setCurrentPage(--currentPage);
+        paginatedList = queuedMoviesList.slice(
+          (currentPage - 1) * itemsPerPage,
+          currentPage * itemsPerPage
+        );
+        main.innerHTML = '';
+        console.log(paginatedList);
+
+        renderMovies(paginatedList);
+        onTopScroll();
+      });
+      pagination.nextButton.addEventListener('click', async () => {
+        pagination.setCurrentPage(++currentPage);
+        paginatedList = queuedMoviesList.slice(
+          (currentPage - 1) * itemsPerPage,
+          currentPage * itemsPerPage
+        );
+        main.innerHTML = '';
+        console.log(paginatedList);
+
+        renderMovies(paginatedList);
+        onTopScroll();
+      });
+      document.querySelectorAll('.pagination__number').forEach(button => {
+        const pageIndex = Number(button.getAttribute('page-index'));
+        if (pageIndex) {
+          button.addEventListener('click', async () => {
+            pagination.setCurrentPage(pageIndex);
+            currentPage = pageIndex;
+
+            paginatedList = queuedMoviesList.slice(
+              (currentPage - 1) * itemsPerPage,
+              currentPage * itemsPerPage
+            );
+            main.innerHTML = '';
+            console.log(paginatedList);
+
+            renderMovies(paginatedList);
+            onTopScroll();
+          });
+        }
+      });
+
+      queueBtn.textContent = `QUEUE : ${queuedMoviesNumber}`;
     }
   } else {
-      main.insertAdjacentHTML('beforeend', `<p class="alert">There are no movies in your queue!</p>`);
-      queueBtn.textContent = `QUEUE`;
-      loader.style.display = 'none';
+    main.insertAdjacentHTML(
+      'beforeend',
+      `<p class="alert">There are no movies in your queue!</p>`
+    );
+    queueBtn.textContent = `QUEUE`;
+    loader.style.display = 'none';
   }
-    queueBtn.setAttribute('disabled', true);
-  
+  queueBtn.setAttribute('disabled', true);
 }
 
 queueBtn.addEventListener('click', event => {
   event.preventDefault();
   getQueuedMovies();
 });
-
-
 
 //render movies
 function renderMovies(movies) {

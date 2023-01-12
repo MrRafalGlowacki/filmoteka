@@ -1,0 +1,120 @@
+.change-theme {
+  &__btn {
+    position: absolute;
+    left: 37px;
+    top: 40px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    svg {
+      width: 40px;
+      height: 40px;
+      padding: 9px;
+      fill: getColor(button-color);
+      transition-property: fill;
+      transition-duration: 250ms;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      &:hover,
+      &:active,
+      &:focus {
+        fill: getColor('menu-holder');
+      }
+    }
+  }
+}
+body.dark-theme {
+  background-color: getColor('bgd');
+  color: getColor('basic-color');
+  .icon {
+    color: getColor('bgd');
+  }
+  .header__logo-word {
+    color: getColor('bgd');
+  }
+  .footer {
+    color: getColor('basic-lighter');
+    &__box {
+      background-color: #262626;
+
+      &__text {
+        color: inherit;
+      }
+    }
+  }
+
+  .genre {
+    background-color: getColor('bgd');
+    color: getColor('basic-color');
+    &:hover {
+      background: getColor('menu-holder');
+    }
+  }
+  .genres-menu__select {
+    background-color: transparent;
+  }
+  .focused-genre {
+    background: getColor('menu-holder');
+  }
+  .queue-btn {
+    border: 1px solid getColor('basic-color');
+    color: getColor('basic-color');
+  }
+  .rate__total {
+    background: getColor('bgd');
+  }
+  .modal {
+    background-color: getColor('bgd-darker');
+    &__close {
+      background: getColor('bgd');
+    }
+  }
+
+  .team {
+    &-container {
+      background-color: getColor('bgd');
+    }
+
+    &__members {
+      background-color: #8d8c8c;
+    }
+    &__social-links svg {
+      fill: getColor('menu-holder');
+      &:hover {
+        fill: getColor('basic-lighter');
+      }
+    }
+  }
+  .header-library__logo-word {
+    color: getColor('bgd');
+  }
+  .auth {
+    &-modal {
+      background-color: getColor('bgd');
+      &__close-btn {
+        color: getColor('bgd-dark');
+      }
+    }
+    &-form {
+      &__button-google {
+        background-color: getColor('bgd-lighter');
+      }
+      &__text {
+        color: getColor('bgd-dark');
+      }
+    }
+
+    &-form {
+      &__sign-text {
+        color: getColor('bgd-dark');
+        &__button {
+          color: getColor('bgd');
+        }
+      }
+      &__input {
+        background-color: getColor('bgd-lighter');
+        color: getColor('basic-color');
+      }
+    }
+  }
+}

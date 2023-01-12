@@ -67,6 +67,7 @@ async function getWatchedMovies() {
   } else {
       main.insertAdjacentHTML('beforeend', `<p class="alert">There are no movies in your watched list!</p>`);
       watchedBtn.textContent = `WATCHED`;
+      loader.style.display = 'none';
   }
 }
 
@@ -108,8 +109,9 @@ async function getQueuedMovies() {
     }
     queueBtn.setAttribute('disabled', true);
   } else {
-        main.insertAdjacentHTML('beforeend', `<p class="alert">There are no movies in your queue!</p>`);
-    queueBtn.textContent = `QUEUE`;
+      main.insertAdjacentHTML('beforeend', `<p class="alert">There are no movies in your queue!</p>`);
+      queueBtn.textContent = `QUEUE`;
+      loader.style.display = 'none';
   }
 }
 

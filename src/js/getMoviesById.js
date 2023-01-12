@@ -65,14 +65,14 @@ async function getWatchedMovies() {
       renderMovies(watchedMoviesList);
       watchedBtn.textContent = `WATCHED : ${watchedMoviesNumber}`;
     }
-    watchedBtn.setAttribute('disabled', true);
   } else {
       main.insertAdjacentHTML('beforeend', `<p class="alert">There are no movies in your watched list!</p>`);
       watchedBtn.textContent = `WATCHED`;
       loader.style.display = 'none';
   }
+    watchedBtn.setAttribute('disabled', true);
+  
 }
-
 
 watchedBtn.addEventListener('click', event => {
   event.preventDefault();
@@ -111,12 +111,12 @@ async function getQueuedMovies() {
       renderMovies(queuedMoviesList);
       queueBtn.textContent=`QUEUE : ${queuedMoviesNumber}`
     }
-    queueBtn.setAttribute('disabled', true);
   } else {
       main.insertAdjacentHTML('beforeend', `<p class="alert">There are no movies in your queue!</p>`);
       queueBtn.textContent = `QUEUE`;
       loader.style.display = 'none';
   }
+    queueBtn.setAttribute('disabled', true);
 }
 
 queueBtn.addEventListener('click', event => {

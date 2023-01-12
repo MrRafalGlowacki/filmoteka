@@ -38,36 +38,37 @@ getWatchedMovies();
 
 async function getWatchedMovies() {
   queueBtn.removeAttribute('disabled');
-  queueBtn.textContent = `QUEUE`;
   main.innerHTML = '';
+  watchedBtn.style.backgroundColor = ' #ff6b01';
   queueBtn.style.backgroundColor = ' transparent';
   watchedBtn.style.backgroundColor = ' #ff6b01';
-  let watchedMoviesNumber = JSON.parse(localStorage.getItem('added-to-watched')).length;
 
-  if (JSON.parse(localStorage.getItem('added-to-watched')) === null 
-    ||
-    (JSON.parse(localStorage.getItem('added-to-watched')).length === 0)) {
-    main.insertAdjacentHTML('beforeend', `<p class="alert">There are no movies in your watched list!</p>`);
-    watchedBtn.textContent = `WATCHED`;
-    
-    
-    loader.style.display = 'none';
-  } else {
-    watchedMovies = JSON.parse(localStorage.getItem('added-to-watched'));
-    let watchedMoviesList = [];
+  if (JSON.parse(localStorage.getItem('added-to-watched')) !== null) {
+    if (JSON.parse(localStorage.getItem('added-to-watched')).length === 0) {
+      main.insertAdjacentHTML('beforeend', `<p class="alert">There are no movies in your watched list!</p>`);
+      watchedBtn.textContent = `WATCHED`;
+      loader.style.display = 'none';
+    } else {
+      watchedMovies = JSON.parse(localStorage.getItem('added-to-watched'));
 
-    for (let i = 0; i < watchedMovies.length; i++) {
-      let watchedMovieId = watchedMovies[i];
-      let watchedMoviesItem = await getMoviesbyId(watchedMovieId);
+      let watchedMoviesList = [];
 
-      watchedMoviesList.push(watchedMoviesItem);
-    }
+      for (let i = 0; i < watchedMovies.length; i++) {
+        let watchedMovieId = watchedMovies[i];
+
+        let watchedMoviesItem = await getMoviesbyId(watchedMovieId);
+
+        watchedMoviesList.push(watchedMoviesItem);
+      }
       renderMovies(watchedMoviesList);
       watchedBtn.textContent = `WATCHED : ${watchedMoviesNumber}`;
+    }
+    watchedBtn.setAttribute('disabled', true);
+  } else {
+      main.insertAdjacentHTML('beforeend', `<p class="alert">There are no movies in your watched list!</p>`);
+      watchedBtn.textContent = `WATCHED`;
   }
-  watchedBtn.setAttribute('disabled', true);
 }
-  
 
 
 watchedBtn.addEventListener('click', event => {
@@ -81,32 +82,35 @@ let queuedMovies = [];
 
 async function getQueuedMovies() {
   watchedBtn.removeAttribute('disabled');
-  watchedBtn.textContent = `WATCHED`;
   main.innerHTML = '';
   watchedBtn.style.backgroundColor = 'transparent';
   queueBtn.style.backgroundColor = ' #ff6b01';
-  let queuedMoviesNumber = JSON.parse(localStorage.getItem('added-to-queue')).length;
 
-  if (JSON.parse(localStorage.getItem('added-to-queue')) === null ||
-   (JSON.parse(localStorage.getItem('added-to-queue')).length === 0)) {
+  if (JSON.parse(localStorage.getItem('added-to-queue')) !== null) {
+    if (JSON.parse(localStorage.getItem('added-to-queue')).length === 0) {
     main.insertAdjacentHTML('beforeend', `<p class="alert">There are no movies in your queue!</p>`);
     queueBtn.textContent = `QUEUE`;
     loader.style.display = 'none';
-      
-  } else {
-    queuedMovies = JSON.parse(localStorage.getItem('added-to-queue'));
-    let queuedMoviesList = [];
 
-    for (let i = 0; i < queuedMovies.length; i++) {
-      let queuedMovieId = queuedMovies[i];
-      let queuedMoviesItem = await getMoviesbyId(queuedMovieId);
+    } else {
+      queuedMovies = JSON.parse(localStorage.getItem('added-to-queue'));
+      let queuedMoviesList = [];
 
-      queuedMoviesList.push(queuedMoviesItem);
+      for (let i = 0; i < queuedMovies.length; i++) {
+        let queuedMovieId = queuedMovies[i];
+
+        let queuedMoviesItem = await getMoviesbyId(queuedMovieId);
+
+        queuedMoviesList.push(queuedMoviesItem);
+      }
+      renderMovies(queuedMoviesList);
+      queueBtn.textContent=`QUEUE : ${queuedMoviesNumber}`
     }
-    renderMovies(queuedMoviesList);
-    queueBtn.textContent=`QUEUE : ${queuedMoviesNumber}`
+    queueBtn.setAttribute('disabled', true);
+  } else {
+        main.insertAdjacentHTML('beforeend', `<p class="alert">There are no movies in your queue!</p>`);
+    queueBtn.textContent = `QUEUE`;
   }
-  queueBtn.setAttribute('disabled', true);
 }
 
 queueBtn.addEventListener('click', event => {

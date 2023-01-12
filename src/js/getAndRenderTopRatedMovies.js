@@ -1,6 +1,6 @@
 const main = document.querySelector('.main-box');
 import { getGenresList } from './getGenreList';
-import { getMovies } from './getMovies';
+import { getMovies } from './getPopularMovies';
 import { render } from './renderMovieCard';
 import * as pagination from './pagination';
 import { onTopScroll } from './toTopBtn';

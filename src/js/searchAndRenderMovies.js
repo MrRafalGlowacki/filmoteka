@@ -1,4 +1,4 @@
-import { getMovies } from '../getMovies';
+import { getMovies } from './getMovies';
 import { render } from './renderMovieCard';
 import { Notify } from 'notiflix';
 import * as pagination from './pagination';

@@ -84,7 +84,6 @@ const handlePageButtonsStatus = () => {
 
 const displayLessPages = pageNum => {
   const dots = document.querySelectorAll('.pagination__numbers-ellipsis');
-  console.log(dots);
   document.querySelectorAll('.pagination__number').forEach(button => {
     const pageIndex = Number(button.getAttribute('page-index'));
 

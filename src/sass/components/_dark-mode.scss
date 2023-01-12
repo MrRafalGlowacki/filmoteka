@@ -51,6 +51,11 @@ body.dark-theme {
     &__button {
       color: getColor('basic-color');
     }
+
+    &__number:focus,
+    &__number:hover {
+      color: getColor('underline-color');
+    }
   }
 
   .genre {

@@ -228,6 +228,7 @@
       border-radius: 5px;
       transform: scale(1);
       transition: transform 0.5s linear;
+      cursor: pointer;
       &:hover,
       &:focus {
         border-color: getColor('button-color');

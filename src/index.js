@@ -7,3 +7,4 @@ import { renderFoundMovies } from './js/searchAndRenderMovies.js';
 import './js/toTopBtn';
 import './js/students';
 import './js/firebase';
+import './js/darkMode';

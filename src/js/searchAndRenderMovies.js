@@ -26,7 +26,6 @@ async function renderFoundMovies(event) {
       header.innerHTML = `Search result not successful. Enter the correct movie name.`;
     } else {
       main.innerHTML = '';
-      console.log(moviesList);
 
       moviesList.results.map(elem => {
         main.insertAdjacentHTML('beforeend', render(elem));

@@ -20,10 +20,12 @@ const getMoviesbyId = async movieID => {
     let API_URL = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${API_KEY}&language=en-US`;
     const response = await axios.get(API_URL);
     loader.style.display = 'none';
+    loader.style.overflow = 'hidden';
 
     return response.data;
   } catch (error) {
     loader.style.display = 'none';
+    loader.style.overflow = 'hidden';
     console.error(error);
   }
 };
@@ -42,11 +44,12 @@ async function getWatchedMovies() {
   watchedBtn.style.backgroundColor = ' #ff6b01';
   let watchedMoviesNumber = JSON.parse(localStorage.getItem('added-to-watched')).length;
 
-  //if (JSON.parse(localStorage.getItem('added-to-watched')) !== null) {
+  
     if (JSON.parse(localStorage.getItem('added-to-watched')).length === 0) {
       main.insertAdjacentHTML('beforeend', `<p class="alert">There are no movies in your watched list!</p>`);
+      watchedBtn.textContent = `QUEUE`;
     
-    //}
+    
     loader.style.display = 'none';
   } else {
     watchedMovies = JSON.parse(localStorage.getItem('added-to-watched'));
@@ -62,8 +65,6 @@ async function getWatchedMovies() {
       watchedBtn.textContent = `WATCHED : ${watchedMoviesNumber}`;
   }
   watchedBtn.setAttribute('disabled', true);
-
- 
 }
   
 
@@ -88,6 +89,7 @@ async function getQueuedMovies() {
   //if (JSON.parse(localStorage.getItem('added-to-queue')) !== null) {
   if (JSON.parse(localStorage.getItem('added-to-queue')).length === 0) {
     main.insertAdjacentHTML('beforeend', `<p class="alert">There are no movies in your queue!</p>`);
+    queueBtn.textContent = `QUEUE`;
     loader.style.display = 'none';
       
   } else {
@@ -104,7 +106,6 @@ async function getQueuedMovies() {
     queueBtn.textContent=`QUEUE : ${queuedMoviesNumber}`
   }
   queueBtn.setAttribute('disabled', true);
-
 }
  
 //}

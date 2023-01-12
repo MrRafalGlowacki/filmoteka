@@ -3,8 +3,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: calc(100vh - 40vh);
+  justify-content: flex-start;
+  min-height: calc(100vh - 307px);
+  //calc(100vh - 40vh);
 }
 .main-box {
   display: flex;
@@ -87,7 +88,7 @@
 .no-movies {
   font-weight: 900;
   font-size: 30px;
-  height: calc(100vh - 39vh);
+  min-height: calc(100vh - 39vh);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -99,7 +100,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    //justify-content: center;
   }
   .main-box {
     width: calc(2 * 294px + 30px);
@@ -122,7 +123,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    //justify-content: center;
     padding: 60px 0 40px 0;
   }
   .main-box {

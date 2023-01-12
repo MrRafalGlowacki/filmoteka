@@ -44,11 +44,12 @@ async function getWatchedMovies() {
   watchedBtn.style.backgroundColor = ' #ff6b01';
   let watchedMoviesNumber = JSON.parse(localStorage.getItem('added-to-watched')).length;
 
-  if (JSON.parse(localStorage.getItem('added-to-watched')) !== null) {
-    if (JSON.parse(localStorage.getItem('added-to-watched')).length === 0) {
-      main.insertAdjacentHTML('beforeend', `<p class="alert">There are no movies in your watched list!</p>`);
-      watchedBtn.textContent = `QUEUE`;
-    }
+  if (JSON.parse(localStorage.getItem('added-to-watched')) === null 
+    ||
+    (JSON.parse(localStorage.getItem('added-to-watched')).length === 0)) {
+    main.insertAdjacentHTML('beforeend', `<p class="alert">There are no movies in your watched list!</p>`);
+    watchedBtn.textContent = `WATCHED`;
+    
     
     loader.style.display = 'none';
   } else {
@@ -86,8 +87,8 @@ async function getQueuedMovies() {
   queueBtn.style.backgroundColor = ' #ff6b01';
   let queuedMoviesNumber = JSON.parse(localStorage.getItem('added-to-queue')).length;
 
-  if (JSON.parse(localStorage.getItem('added-to-queue')) !== null) {
-  if (JSON.parse(localStorage.getItem('added-to-queue')).length === 0) {
+  if (JSON.parse(localStorage.getItem('added-to-queue')) === null ||
+   (JSON.parse(localStorage.getItem('added-to-queue')).length === 0)) {
     main.insertAdjacentHTML('beforeend', `<p class="alert">There are no movies in your queue!</p>`);
     queueBtn.textContent = `QUEUE`;
     loader.style.display = 'none';

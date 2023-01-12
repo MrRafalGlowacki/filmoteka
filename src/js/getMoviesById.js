@@ -119,7 +119,6 @@ async function getWatchedMovies() {
               currentPage * itemsPerPage
             );
             main.innerHTML = '';
-            console.log(paginatedList);
 
             renderMovies(paginatedList);
             onTopScroll();
@@ -230,7 +229,6 @@ async function getQueuedMovies() {
               currentPage * itemsPerPage
             );
             main.innerHTML = '';
-            console.log(paginatedList);
 
             renderMovies(paginatedList);
             onTopScroll();

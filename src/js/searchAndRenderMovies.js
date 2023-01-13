@@ -27,9 +27,9 @@ async function renderFoundMovies(event) {
     if (!moviesList.results.length) {
       header.innerHTML = `Search result not successful. Enter the correct movie name.`;
     } else {
-      main.innerHTML = '';
       clearGenres();
-      
+      main.innerHTML = '';
+     
       moviesList.results.map(elem => {
         main.insertAdjacentHTML('beforeend', render(elem));
       });

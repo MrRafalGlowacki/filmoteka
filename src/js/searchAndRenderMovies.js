@@ -5,10 +5,13 @@ import * as pagination from './pagination';
 import { onTopScroll } from './toTopBtn';
 
 const header = document.querySelector('.header__no-movies');
+const body = document.querySelector('.main');
 const main = document.querySelector('.main-box');
 const inputSearch = document.querySelector("input[name='searchQuery']");
 const searchButton = document.querySelector('.header__search-form-btn');
 // const toTopBtn = document.querySelector('.to-top');
+
+body.style.minHeight = 'calc(100% - 451px)';
 
 let currentPage = 1;
 

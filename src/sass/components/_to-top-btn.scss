@@ -28,4 +28,7 @@
     animation-play-state: paused;
   }
   z-index: 10;
+  @media screen and (min-width: 768px) {
+      bottom: 5%;
+    }
 }

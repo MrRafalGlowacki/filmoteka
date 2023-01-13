@@ -8,6 +8,7 @@ const header = document.querySelector('.header__no-movies');
 const main = document.querySelector('.main-box');
 const inputSearch = document.querySelector("input[name='searchQuery']");
 const searchButton = document.querySelector('.header__search-form-btn');
+const genresClear = document.querySelector('.genres-menu__clear')
 // const toTopBtn = document.querySelector('.to-top');
 
 let currentPage = 1;
@@ -44,6 +45,7 @@ async function renderFoundMovies(event) {
         moviesList.results.map(elem => {
           main.insertAdjacentHTML('beforeend', render(elem));
         });
+        genresClear.click()
         onTopScroll();
       });
       pagination.nextButton.addEventListener('click', async () => {

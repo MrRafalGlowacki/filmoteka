@@ -3,7 +3,6 @@ import { render } from './renderMovieCard';
 import { Notify } from 'notiflix';
 import * as pagination from './pagination';
 import { onTopScroll } from './toTopBtn';
-import { clearGenres } from './advencedSearch'
 
 const header = document.querySelector('.header__no-movies');
 const main = document.querySelector('.main-box');

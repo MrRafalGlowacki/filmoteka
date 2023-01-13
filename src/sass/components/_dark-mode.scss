@@ -84,10 +84,17 @@ body.dark-theme {
       background: getColor('bgd');
     }
   }
+  .students-modal__close-btn--svg{
+    fill: getColor('basic-color');
+  }
 
   .team {
     &-container {
       background-color: getColor('bgd');
+    }
+
+    &__names{
+      color: getColor('basic-color');
     }
 
     &__members {
@@ -105,7 +112,11 @@ body.dark-theme {
     &-modal {
       background-color: getColor('bgd');
       &__close-btn {
-        color: getColor('bgd-dark');
+        color: getColor('basic-color');
+      }
+
+      &__title{
+        color: getColor('basic-color');
       }
     }
     &-form {
@@ -119,7 +130,7 @@ body.dark-theme {
 
     &-form {
       &__sign-text {
-        color: getColor('bgd-dark');
+        color: getColor('basic-color');
         &__button {
           color: getColor('bgd');
         }

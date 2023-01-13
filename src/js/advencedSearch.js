@@ -66,4 +66,3 @@ const clearGenres = event => {
 
 genresClear.addEventListener('click', clearGenres);
 getGenres();
-export { clearGenres }

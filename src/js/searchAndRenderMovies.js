@@ -40,7 +40,6 @@ async function renderFoundMovies(event) {
         pagination.setCurrentPage(currentPage - 1);
         moviesList = await getMovies(searchQuery, --currentPage);
         main.innerHTML = '';
-        console.log(moviesList);
 
         moviesList.results.map(elem => {
           main.insertAdjacentHTML('beforeend', render(elem));
@@ -51,7 +50,6 @@ async function renderFoundMovies(event) {
         pagination.setCurrentPage(currentPage + 1);
         moviesList = await getMovies(searchQuery, ++currentPage);
         main.innerHTML = '';
-        console.log(moviesList);
 
         moviesList.results.map(elem => {
           main.insertAdjacentHTML('beforeend', render(elem));
@@ -67,7 +65,6 @@ async function renderFoundMovies(event) {
 
             moviesList = await getMovies(searchQuery, currentPage);
             main.innerHTML = '';
-            console.log(moviesList);
 
             moviesList.results.map(elem => {
               main.insertAdjacentHTML('beforeend', render(elem));
